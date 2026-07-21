@@ -1,0 +1,104 @@
+I want to develop a website, tentatively called "Tu Reclamo". 
+
+CONCEPT AND ORIGIN
+This started as a Glassdoor/tusecreto-style idea for tenants to review rented places and 
+landlords. That is still the long-term direction and the reason some decisions below lean 
+cautious (identity, moderation) — but that "risky legal territory" version is a later layer 
+we are explicitly NOT building yet. For now, the product has shifted to a more general, open 
+idea: pin-based, geo-located Twitter threads. People report issues tied to a physical location 
+(a pothole, a dirty street, a restaurant with cockroaches, a landlord dispute, anything), 
+and the discussion around that location grows over time like a thread. Treat the 
+tenant/landlord use case as one example of a claim, not the schema.
+
+I am not a web developer, so I need your assistance to plan and execute on everything, 
+including making technology choices I have no strong intuition about. This is a PoC/MVP 
+passion project with no fixed budget — favor low-cost, low-maintenance, easy-to-scale-later 
+choices over premium ones.
+
+SCOPE FOR FIRST RELEASE
+- Country: Argentina. Language: Spanish. City: Rosario, as the first target market.
+- Single-language, single-country architecture is fine for MVP; don't over-engineer for 
+  future i18n, but don't paint us into a corner either.
+
+BACKEND
+Supabase, for easier setup, simple login, and usage-based scaling.
+
+FRONTEND
+Your choice. Something relatively simple to maintain and work on, with all the modern 
+features expected of a site like this (map rendering, image upload/display, real-time-ish 
+feed updates). Choose specific libraries (map tiles/rendering, geocoding provider, image 
+hosting/CDN, deployment target) rather than leaving them abstract — this is a decision I'm 
+delegating to you.
+
+AUTHENTICATION AND IDENTITY
+- Google SSO via Supabase for the initial login method, with the schema/auth design able to 
+  accommodate additional providers later without a rework.
+- A "publish as anonymous" option must be available for submissions, comments, and likes 
+  from the start — this is a core feature, not a stretch goal, given where the product is 
+  eventually headed. Design the data model so a post can be attributed either to a public 
+  user identity or to "anonymous," and think through what "anonymous" actually protects 
+  (e.g., does it hide the identity from other users only, or also from moderators/logs?).
+
+PRODUCT DECISIONS
+
+- The most important screen is a map centered on the user's location. Users scroll around 
+  the map; mouse-over shows a summary of relevant claims near that point; clicking a pin 
+  opens a panel with full detail.
+- A user submission includes: an exact address (or point on the map), photos, and a 
+  description of the issue.
+  - There are no set categories. The only customization is choosing a pin color and icon 
+    per submission.
+  - Users can add searchable hashtags.
+- Likes work like Waze validations: they signal how prominent/relevant an issue is. More 
+  liked issues surface higher in lists and are prioritized when loading the map (e.g., at 
+  low zoom levels or high pin density).
+- Comments are enabled by default on every issue; each issue functions like a thread. Other 
+  users can add their own photos to an existing issue, which also counts toward its 
+  likeability.
+- Issues can eventually "expire" or be marked resolved, but the exact mechanic is undecided. 
+  At minimum: a manual "mark as solved" flow where a different user must submit a new photo 
+  as evidence, and a third party (mechanism TBD — could be another user, a moderator, or a 
+  vote) must validate the resolution before it's accepted. 
+- Two engagement goals drive the design, in priority order:
+  1. Primary: amplify a claim and give it permanence as a persistent pin on the map. This 
+     supports "voyeuristic" browsing — someone finds a pothole that's been open for 6 
+     months, opens it, and sees the full history: original report, photo updates over time, 
+     and neighbors piling on in the comments. A map with the top theads of the months paints a picture of the city.
+  2. Secondary: a "what's new" doomscroll feed, Twitter-style, optimized for short, frequent 
+     opens. This feed is filtered by country/province/city name only — no geolocation or 
+     distance calculation needed for this view. This is how new theads are discovered and drive engagement.
+
+OPEN QUESTIONS TO RESOLVE BEFORE OR WHILE WRITING SPECS
+Ask me about these rather than silently deciding, since they affect the data model and are 
+sensitive to get wrong even at MVP stage. Propose alternatives for me to decide, since they are open questions i do not have clear answers to:
+
+1. Moderation and abuse handling: is there any reporting/flagging or admin review for posts, 
+   even a minimal version, for the MVP? Photo upload UGC sites need at least a baseline plan 
+   even if full moderation tooling comes later.
+2. Aggregation model: if two people report separate issues at the same address or nearby 
+   points, is that one pin with multiple threads, or multiple overlapping pins? This is a 
+   core schema decision.
+3. Visibility model: the spec should clarify whether all issues are public by default, or 
+   whether private/draft states exist — don't leave "public issues" implying a hidden 
+   alternative that isn't designed.
+4. Photo handling basics: size/format limits, and whether EXIF/location metadata should be 
+   stripped from uploads by default (relevant given exact addresses are already being 
+   captured deliberately).
+5. Anti-gaming for likes: not a blocker for MVP, but flag it as a known v2 concern (bot 
+   likes, coordinated brigading of a person/business) so the schema doesn't foreclose adding 
+   defenses later.
+
+DELIVERABLE
+Design and write specs alongside an implementation plan. The primary output is an 
+implementation guide: a step-by-step document mirroring the flow of real development, 
+organized into sprints/features. This guide will be ingested by you and other LLMs as we 
+work toward an MVP, and should reference:
+
+1. A product spec detailing every feature above.
+2. A backend and frontend spec mapping out the primary components to be built.
+3. A deployment guide covering the path from local development to real-world deployment.
+4. Any additional supporting documentation you see fit (e.g., data model/schema doc, 
+   moderation policy stub, open-questions log).
+
+Feedback on the proposals above is welcome. Ask for clarification as many times as needed 
+before locking in the plan.
