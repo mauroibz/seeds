@@ -1,53 +1,77 @@
-# Project Kickstart Kit
+<p align="center">
+  <img src="assets/seeds-logo-tagline.svg" alt="Seeds — for agentic builds" width="480">
+</p>
 
-This repo is two things, bundled together because they were discovered together on one
-project (QuePaso), but genuinely separable — know which one you're reaching for.
+A methodology and a reusable operating manual for building a real project with an
+autonomous LLM coding agent — sprint by sprint, across many sessions, with no standing
+human supervision.
 
-1. **The agentic execution scaffold** — how to get an autonomous LLM coding agent to
-   build a real, multi-week project across many sessions with no standing human
-   supervision: a milestone-then-stop cadence, criteria that must be *verified* not
-   assumed, an append-only worklog so no session re-derives what a previous one already
-   learned, a decisions log treated as settled law, and guardrails aimed at specific
-   failure modes rather than generic caution. **This part is domain-independent** — it
-   doesn't know or care what you're building. It's the actual reusable asset.
-2. **A spec-generation methodology** — a repeatable way to turn a rough product idea
-   into a product spec, architecture spec, data model, sprint plan, deployment guide,
-   and trust & safety policy, by asking clarifying questions instead of guessing. Useful,
-   but its *output* is different every time by design — a future project's specs won't
-   look like QuePaso's, and that's fine.
+It's two things, bundled together because they were discovered together on one project,
+but genuinely separable: **the agent operating manual** (domain-independent —
+it doesn't know or care what you're building) and **the spec-generation methodology**
+that gets you to a spec set worth building one around. You don't need the second to use
+the first.
 
-If you only want #1, go straight to `02-agent-manual/AGENTS.template.md` — fill in the
-placeholders against whatever spec set your next project already has (even one written
-by hand, or by a different process entirely) and you have the same operating discipline
-that ran QuePaso's build. Everything else in this repo exists to help you get *to* a
-spec set worth building an agent manual around, not to constrain what that spec set
-contains.
+## Learn about it
 
-## What's here
+Read [`METHODOLOGY.md`](METHODOLOGY.md) — phase by phase, why each document exists, and
+the patterns that generalize past this exact stack (security boundaries live in the data
+layer, store raw rows not counters, decisions are law until superseded, etc.).
+
+Then see how it actually played out — two real, unedited examples at different scales:
+
+- **[`03-case-study-quepaso/`](03-case-study-quepaso/)** — MVP scale: 6 sprints,
+  closed-source. The methodology's first run, and the source every template in this repo
+  was generalized from.
+- **[`04-case-study-akasha/`](04-case-study-akasha/)** — larger scale: 30+ sprints,
+  open-source, still active. What the same discipline looks like stretched over months,
+  including a real documented failure and the verification gate it produced. Its own
+  [README](04-case-study-akasha/README.md) compares it point-by-point against the
+  templates — what held, what scale forced, what the failure forced.
+
+Templates alone lose the texture that makes a spec set actually usable — the rationale
+columns, the "why we rejected X" notes, the exact tone of an acceptance criterion. When a
+template section feels underspecified, open the matching file in either case study and
+see how much detail it needed in practice.
+
+## Use it
+
+Pick whichever matches where you're starting from:
+
+- **You already have (or are writing) your own specs** and just want the operating
+  discipline that keeps an agent honest across sessions — verifying instead of assuming,
+  remembering across sessions, never relitigating settled decisions. Take
+  [`02-agent-manual/AGENTS.template.md`](02-agent-manual/AGENTS.template.md), fill in
+  the placeholders against whatever spec set you've got, and go. That's the whole
+  reusable asset; nothing else here is required reading.
+- **You're starting from a rough idea with nothing written yet.** Write a brief from
+  [`00-initial-brief/brief-template.md`](00-initial-brief/brief-template.md); feed it to
+  a fresh LLM session to generate the spec set from
+  [`01-spec-templates/`](01-spec-templates/), asking clarifying questions instead of
+  guessing; then have it write `AGENTS.md` from the template above. Or run
+  [`skill/SKILL.md`](skill/SKILL.md), which automates brief → spec set → `AGENTS.md` —
+  read `METHODOLOGY.md` first if you're going to let it run unattended, since the
+  judgment calls in Phase 1 and Phase 4 are worth reviewing by hand at least once.
+
+Either way, once `AGENTS.md` exists: spawn an agent, point it at `AGENTS.md`, say
+"complete the next milestone." Repeat.
+
+## Repo map
 
 ```
-METHODOLOGY.md               ← read this first. Both halves, phase by phase, plus the
-                                generalized patterns list (security boundaries live in
-                                the data layer, store raw rows not counters, derive
-                                lifecycle state at read time, etc.)
+METHODOLOGY.md               ← the how and why, phase by phase — start here to learn it
 00-initial-brief/
   brief-template.md           ← annotated skeleton for your next project's initial brief
 01-spec-templates/            ← skeletons for the 7-doc spec set (product, architecture,
                                 data model, implementation guide, deployment, trust &
-                                safety, decisions log) — placeholders only, no QuePaso
-                                content baked in
+                                safety, decisions log) — placeholders only
 02-agent-manual/
   AGENTS.template.md          ← THE reusable artifact: genericized operating manual for
                                 an autonomous build agent, independent of any spec set
-03-case-study-quepaso/        ← the real, unedited QuePaso artifacts — reference only,
-                                not meant to be copied into a new project. MVP scale:
-                                6 sprints, closed-source, first use of the methodology.
-04-case-study-akasha/         ← the real, unedited Akasha artifacts — same rule, larger
-                                scale: 30+ sprints, open source, a mid-project
-                                architecture pivot, and one documented failure that
-                                produced the "verified not assumed" gate's sharpest form.
-                                Its README also notes where it diverged from the
-                                templates below, and why.
+03-case-study-quepaso/        ← real, unedited artifacts — MVP scale, closed-source,
+                                the first run this kit was generalized from
+04-case-study-akasha/         ← real, unedited artifacts — larger scale, open-source,
+                                still active; its README notes where it diverged and why
 skill/
   SKILL.md                    ← draft Claude Code skill automating brief → spec set →
                                 AGENTS.md (the spec-generation half, not the agent-manual
@@ -56,28 +80,9 @@ skill/
 
 ## Genericity guarantee
 
-Every file outside `03-case-study-quepaso/` and `04-case-study-akasha/` uses bracketed
-placeholders (`[like this]`, `{{LIKE_THIS}}`) instead of real content. Where QuePaso or
-Akasha is mentioned in `METHODOLOGY.md` or the templates, it's always a backward-pointing
-example ("QuePaso's rule was X — see the case study") explaining *why* a section exists,
-never content meant to be reused as-is. The two case-study folders are intentionally
-project-specific — they're there so an underspecified template section has a real worked
-example to compare against, and they're meant to be read, not copied.
-
-## The one-paragraph version (full pipeline)
-
-Write a brief that describes the product and explicitly flags which decisions you want
-to be *asked* about rather than have silently made for you. Feed it to a fresh LLM
-session and have it produce the spec set — asking clarifying questions along the way
-instead of guessing. Then have it write an `AGENTS.md` that turns that spec set into
-instructions an autonomous coding agent can follow, one milestone at a time, forever,
-without you in the loop. Spawn an agent, point it at `AGENTS.md`, say "complete the next
-milestone." Repeat.
-
-## Why a case study folder exists
-
-Templates alone lose the texture that made QuePaso's docs actually usable — the
-rationale columns, the "why we rejected X" notes, the exact tone of an acceptance
-criterion. `03-case-study-quepaso/` is the real, unedited output. When a template
-section feels underspecified, open the matching QuePaso file and see how much detail
-that section actually needed in practice.
+Every file outside the two case-study folders uses bracketed placeholders (`[like this]`,
+`{{LIKE_THIS}}`) instead of real content. Where QuePaso or Akasha is mentioned in
+`METHODOLOGY.md` or the templates, it's always a backward-pointing example ("QuePaso's
+rule was X — see the case study") explaining *why* a section exists, never content meant
+to be reused as-is. The case-study folders are intentionally project-specific — they're
+there to be read, not copied.
