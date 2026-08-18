@@ -135,18 +135,31 @@ quepaso:
    be *executed* (run the tool, open the second browser session, query the DB as the
    restricted role) — never marked done because it plausibly would pass. This is the
    single highest-value sentence in the whole manual.
-2. **An append-only worklog**, one entry per session, fixed format (done / verified /
+2. **A walkthrough gate for anything user-visible.** A green test suite answers "does
+   the code do what the test asserts", not "does the flow work" — a test can mock
+   exactly the boundary that's actually broken and stay green indefinitely, and a
+   project can close many milestones this way before anyone notices the product itself
+   doesn't work. Before a sprint that changes user-visible behavior can close, the agent
+   has to actually run the application against realistic data and perform the real user
+   flow end to end, then record in the worklog what it did and what it saw — including
+   anything that looked wrong but was out of scope for the sprint. An issue noticed and
+   left unrecorded is the exact failure this gate exists to catch. The same logic applies
+   one level down: a test that substitutes a mock for the very unit or boundary an
+   acceptance criterion is about doesn't satisfy that criterion, no matter how green it
+   is — mock the transport, the clock, the filesystem; never mock the thing you're
+   claiming to have verified.
+3. **An append-only worklog**, one entry per session, fixed format (done / verified /
    deviations / blocked / next). This is the agent's memory across sessions — without
    it, session N+1 re-derives everything session N already learned, or worse, silently
    redoes it differently.
-3. **Never relitigate the decisions log; never weaken a security/privacy boundary, even
+4. **Never relitigate the decisions log; never weaken a security/privacy boundary, even
    in debug code.** Guardrails that name the exact failure mode you're most afraid of,
    not generic "be careful" language.
-4. **A completion report format aimed at the actual owner** — plain language, one line
+5. **A completion report format aimed at the actual owner** — plain language, one line
    per acceptance criterion and how it was verified, what needs the owner (accounts,
    money, irreversible choices), one sentence on what's next. If the owner isn't a
    developer, the report has to be readable without becoming one.
-5. **An explicit blocked/ambiguous protocol**: product ambiguity gets logged as an open
+6. **An explicit blocked/ambiguous protocol**: product ambiguity gets logged as an open
    question with options and a recommendation (same Phase-1/2 pattern, self-service);
    implementation ambiguity gets the simplest reversible choice and a worklog note;
    environment breakage gets a self-fix attempt before giving up. "Blocked on X,
@@ -215,6 +228,37 @@ keep the *document shape* (what question each doc answers) and swap the *content
   local, replace it with "always verify against a disposable/staging environment,
   never production" — the principle (never let an agent's verification step touch
   real user data) is what has to survive, not the specific commands.
+
+## A second worked example, at a different scale
+
+`03-case-study-quepaso/` is an MVP snapshot — six sprints, closed-source. It doesn't
+show what this discipline needs once a project runs for months instead of weeks.
+`04-case-study-akasha/` does: a real, ongoing, open-source build (30+ sprints as of its
+snapshot date) run by the same owner under the same discipline this document describes,
+independently extended rather than copied from a template. Full comparison, file by
+file, is in that folder's `README.md`; the short version:
+
+- **What held unchanged**: the document shape, the milestone-then-verify cadence, the
+  append-only worklog, the decisions log as settled law, and the day-one internal-naming
+  lock (quepaso's `pin`, Akasha's `book_tracker`/`items`/`entries`) all survived thirty
+  sprints without modification.
+- **What scale forced**: the operating manual split into a thin entrypoint (`AGENTS.md`)
+  plus an expanded recovery/interruption manual (`WORKFLOW.md`); sprints became one file
+  each instead of one growing `implementation-guide.md`; a machine-readable state
+  pointer (`state.json`) got a validating script instead of living only in a prose
+  checklist.
+- **What a real failure forced**: after thirteen sprints closed green on a product that
+  didn't work — tests mocking the exact boundary that was broken — Akasha added a
+  **walkthrough gate**: a sprint touching user-visible behavior isn't complete until the
+  agent has actually run the app against realistic data and recorded what it saw. This
+  is Phase 4's "verified not assumed" principle in its sharpest documented form, and it's
+  now folded into Phase 4 above and `AGENTS.template.md` §2 and §4 as a general gate —
+  see `04-case-study-akasha/assessment.md` for the incident it came from.
+- **What a design question at architecture scale looks like**: Akasha's single-domain →
+  multi-domain pivot (`domain-architecture-proposal.md`) is Phase 2's mid-stream-feature
+  loop run on a decision big enough to need real measurement first, with a named
+  "proposal" document status added to hold the evidence once the decision moved into the
+  decisions log.
 
 ## Turning this into a Claude Code skill
 

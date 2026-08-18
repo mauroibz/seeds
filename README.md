@@ -40,7 +40,14 @@ METHODOLOGY.md               ← read this first. Both halves, phase by phase, p
   AGENTS.template.md          ← THE reusable artifact: genericized operating manual for
                                 an autonomous build agent, independent of any spec set
 03-case-study-quepaso/        ← the real, unedited QuePaso artifacts — reference only,
-                                not meant to be copied into a new project
+                                not meant to be copied into a new project. MVP scale:
+                                6 sprints, closed-source, first use of the methodology.
+04-case-study-akasha/         ← the real, unedited Akasha artifacts — same rule, larger
+                                scale: 30+ sprints, open source, a mid-project
+                                architecture pivot, and one documented failure that
+                                produced the "verified not assumed" gate's sharpest form.
+                                Its README also notes where it diverged from the
+                                templates below, and why.
 skill/
   SKILL.md                    ← draft Claude Code skill automating brief → spec set →
                                 AGENTS.md (the spec-generation half, not the agent-manual
@@ -49,13 +56,13 @@ skill/
 
 ## Genericity guarantee
 
-Every file outside `03-case-study-quepaso/` uses bracketed placeholders
-(`[like this]`, `{{LIKE_THIS}}`) instead of real content. Where QuePaso is mentioned in
-`METHODOLOGY.md` or the templates, it's always a backward-pointing example ("QuePaso's
-rule was X — see the case study") explaining *why* a section exists, never content
-meant to be reused as-is. `03-case-study-quepaso/` is the one folder that's
-intentionally QuePaso-specific — it's there so an underspecified template section has
-a real worked example to compare against, and it's meant to be read, not copied.
+Every file outside `03-case-study-quepaso/` and `04-case-study-akasha/` uses bracketed
+placeholders (`[like this]`, `{{LIKE_THIS}}`) instead of real content. Where QuePaso or
+Akasha is mentioned in `METHODOLOGY.md` or the templates, it's always a backward-pointing
+example ("QuePaso's rule was X — see the case study") explaining *why* a section exists,
+never content meant to be reused as-is. The two case-study folders are intentionally
+project-specific — they're there so an underspecified template section has a real worked
+example to compare against, and they're meant to be read, not copied.
 
 ## The one-paragraph version (full pipeline)
 

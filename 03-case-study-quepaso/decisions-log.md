@@ -1,6 +1,6 @@
 # Decisions Log — QuePaso
 
-Settled decisions are not relitigated without the owner (Mauro) asking. Dates are decision
+Settled decisions are not relitigated without the owner asking. Dates are decision
 dates. "Owner" = product owner; "delegated" = tech decisions the owner delegated to the
 LLM assistant.
 

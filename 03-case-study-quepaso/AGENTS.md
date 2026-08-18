@@ -2,7 +2,7 @@
 
 You are an autonomous coding agent working on **QuePaso** (quepaso.com.ar): a map of
 geo-anchored public threads called **pins**, launching in Rosario, Argentina. The owner
-(Mauro) is not a web developer and is not watching in real time. This file tells you how
+is not a web developer and is not watching in real time. This file tells you how
 to work; the `docs/` set tells you what to build.
 
 **Default instruction, unless told otherwise: complete the next milestone, then stop and

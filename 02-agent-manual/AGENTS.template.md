@@ -34,11 +34,14 @@ A milestone = one sprint from the implementation guide, done, which requires ALL
 2. **Every acceptance criterion is actually verified** — executed, not assumed. If a
    criterion says "verify with {{TOOL}}", run {{TOOL}}. If it says "in a second browser
    session", use a second (incognito/other-profile) session or a second test user.
-3. Standing rules (implementation guide, bottom) checked — especially the
+3. **If the sprint touches anything user-visible, the walkthrough gate in §4 is
+   satisfied** — you ran the real flow against realistic data yourself and recorded what
+   you saw, not just that the tests passed.
+4. Standing rules (implementation guide, bottom) checked — especially the
    **security/trust-boundary review**: {{RESTATE_YOUR_ONE_SENTENCE_GUARANTEE}}
    (data-model.md §5).
-4. Lint and build pass: {{LINT_AND_BUILD_COMMAND}}.
-5. The Progress tracker checkbox is flipped, the worklog entry is written, and
+5. Lint and build pass: {{LINT_AND_BUILD_COMMAND}}.
+6. The Progress tracker checkbox is flipped, the worklog entry is written, and
    everything is committed.
 
 Then **stop** and write the completion report (§7). Do not start the next sprint unless
@@ -61,7 +64,10 @@ entry per working session, newest at the bottom, format:
 ```markdown
 ## {{DATE}} — Sprint N (in progress | MILESTONE COMPLETE)
 - Done: [steps completed; migrations/commits involved].
-- Verified: [each acceptance criterion and how — be specific, not "looks good"].
+- Verified: [each acceptance criterion and how — be specific, not "looks good". For
+  anything user-visible, this is the walkthrough gate: what flow you actually ran
+  against what data, and what you observed — including anything that looked wrong but
+  was out of scope].
 - Deviations: [anything that diverged from the docs, and why; docs updated in the
   same commit].
 - Blocked/open: [none, or what and why].
@@ -81,8 +87,18 @@ factual.
 - Security/trust-boundary checks are **blocking**: after any change to a query, view,
   endpoint, or access-control rule, verify as the least-privileged caller that
   sensitive fields are actually masked/inaccessible.
-- UI verification: exercise the real flow, not just unit tests, before calling a screen
-  done. Verify the smallest target viewport.
+- **Walkthrough gate**: a sprint that changes user-visible behavior is not done because
+  its tests are green. Passing tests prove the code does what the test asserts, not that
+  the flow works — a test can mock exactly the boundary that's actually broken and stay
+  green forever. Before calling the sprint done, run the real application against
+  realistic data and perform the actual user flow yourself, then record in the worklog
+  entry what you did and what you observed — including anything that looked wrong but
+  was out of scope for this sprint. An issue noticed and left unrecorded is the failure
+  this gate exists to catch. Verify the smallest target viewport.
+- A test that substitutes a mock for the exact unit or boundary an acceptance criterion
+  is about does not satisfy that criterion. Mock the transport, the clock, the
+  filesystem, an external API at its edge — never the thing you're claiming to have
+  verified.
 - From {{SPRINT_WHERE_E2E_STARTS}} on, the end-to-end smoke test must pass before any
   commit that touches covered flows.
 - **Never verify against the hosted/production environment**; all testing is local (or
