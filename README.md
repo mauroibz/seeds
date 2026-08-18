@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="assets/seeds-logo-tagline.svg" alt="Seeds — for agentic builds" width="480">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/seeds-logo-tagline-dark.svg">
+    <img src="assets/seeds-logo-tagline.svg" alt="Seeds — for agentic builds" width="480">
+  </picture>
 </p>
 
 A methodology and a reusable operating manual for building a real project with an
