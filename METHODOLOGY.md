@@ -247,6 +247,18 @@ file, is in that folder's `README.md`; the short version:
   each instead of one growing `implementation-guide.md`; a machine-readable state
   pointer (`state.json`) got a validating script instead of living only in a prose
   checklist.
+- **What 75 sprints then forced on the state pointer itself**: the validating script,
+  by itself, is only half the pattern — it *catches* the two artifacts disagreeing after
+  the fact, but while the pointer and the active sprint file's `Status` line both must
+  be edited by hand, every status flip is a double edit and every closure a
+  multi-field hand-edit ritual. The shape that holds is a single source of truth with a
+  derived pointer: the per-sprint-file `Status` fields are authoritative, a small sync
+  script (`scripts/sync_sprint_state.py`) flips a `Status`, regenerates the pointer,
+  refuses illegal transitions and impossible result states (two actives, zero actives,
+  non-sequential successor) and reverts everything on refusal, and the validating
+  script keeps its agreement check as an independent guard rather than the mechanism
+  of agreement. When a project grows a machine-readable pointer, it must never keep
+  hand-editing both sides; the pointer is generated.
 - **What a real failure forced**: after thirteen sprints closed green on a product that
   didn't work — tests mocking the exact boundary that was broken — Akasha added a
   **walkthrough gate**: a sprint touching user-visible behavior isn't complete until the

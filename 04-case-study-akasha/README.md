@@ -112,7 +112,16 @@ yet folded into the templates:
    folder — it's code, not a doc) makes "which sprint is active, what's it waiting on"
    parseable and lint-checked instead of living only in prose. The kit's progress
    tracker (a checklist inside `implementation-guide.md`) is the same idea without the
-   parseability; fine at 6 sprints, worth automating past ~15.
+   parseability; fine at 6 sprints, worth automating past ~15. **Post-snapshot note
+   (2026-09-08):** the validating script alone turned out to be half the loop — it
+   catches disagreement after the fact, but each status flip still required editing
+   both the pointer and the sprint file's `Status` line by hand. The repo has since
+   made the sprint files the single source of truth and added a sync script
+   (`scripts/sync_sprint_state.py`) that flips a `Status`, regenerates `state.json`,
+   refuses illegal transitions with full revert, while the validator keeps its
+   agreement check as an independent guard. The `AGENTS.md`/`WORKFLOW.md` snapshots
+   in this folder predate that change and still show the dual hand-edit ritual; read
+   this note for the pattern's current shape.
 
 5. **Sprints as one file each** (`docs/sprints/NNN-name.md`) plus a `ROADMAP.md` holding
    contracts for sprints not yet active and a `TEMPLATE.md` to expand the next one from —
