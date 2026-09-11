@@ -5,87 +5,110 @@
   </picture>
 </p>
 
-A methodology and a reusable operating manual for building a real project with an
-autonomous LLM coding agent — sprint by sprint, across many sessions, with no standing
-human supervision.
+Seeds is a lightweight operating method for projects carried by agents across many
+sessions. It grew out of software development, but the loop applies to any agentic project
+that can be divided into bounded outcomes and verified with evidence. Seeds gives a
+workspace explicit sources of truth, one active milestone, executable acceptance
+criteria, and a clean handoff to the next session.
 
-It's two things, bundled together because they were discovered together on one project,
-but genuinely separable: **the agent operating manual** (domain-independent —
-it doesn't know or care what you're building) and **the spec-generation methodology**
-that gets you to a spec set worth building one around. You don't need the second to use
-the first.
+The loop is deliberately small:
 
-## Learn about it
+> Understand → decide → slice → build → verify → hand off.
 
-Read [`METHODOLOGY.md`](METHODOLOGY.md) — phase by phase, why each document exists, and
-the patterns that generalize past this exact stack (security boundaries live in the data
-layer, store raw rows not counters, decisions are law until superseded, etc.).
+## Start here
 
-Then see how it actually played out — two real, unedited examples at different scales:
+Give an agent one of these instructions.
 
-- **[`03-case-study-quepaso/`](03-case-study-quepaso/)** — MVP scale: 6 sprints,
-  closed-source. The methodology's first run, and the source every template in this repo
-  was generalized from.
-- **[`04-case-study-akasha/`](04-case-study-akasha/)** — larger scale: 30+ sprints,
-  open-source, still active. What the same discipline looks like stretched over months,
-  including a real documented failure and the verification gate it produced. Its own
-  [README](04-case-study-akasha/README.md) compares it point-by-point against the
-  templates — what held, what scale forced, what the failure forced.
+**New project**
 
-Templates alone lose the texture that makes a spec set actually usable — the rationale
-columns, the "why we rejected X" notes, the exact tone of an acceptance criterion. When a
-template section feels underspecified, open the matching file in either case study and
-see how much detail it needed in practice.
-
-## Use it
-
-Pick whichever matches where you're starting from:
-
-- **You already have (or are writing) your own specs** and just want the operating
-  discipline that keeps an agent honest across sessions — verifying instead of assuming,
-  remembering across sessions, never relitigating settled decisions. Take
-  [`02-agent-manual/AGENTS.template.md`](02-agent-manual/AGENTS.template.md), fill in
-  the placeholders against whatever spec set you've got, and go. That's the whole
-  reusable asset; nothing else here is required reading.
-- **You're starting from a rough idea with nothing written yet.** Write a brief from
-  [`00-initial-brief/brief-template.md`](00-initial-brief/brief-template.md); feed it to
-  a fresh LLM session to generate the spec set from
-  [`01-spec-templates/`](01-spec-templates/), asking clarifying questions instead of
-  guessing; then have it write `AGENTS.md` from the template above. Or run
-  [`skill/SKILL.md`](skill/SKILL.md), which automates brief → spec set → `AGENTS.md` —
-  read `METHODOLOGY.md` first if you're going to let it run unattended, since the
-  judgment calls in Phase 1 and Phase 4 are worth reviewing by hand at least once.
-
-Either way, once `AGENTS.md` exists: spawn an agent, point it at `AGENTS.md`, say
-"complete the next milestone." Repeat.
-
-## Repo map
-
-```
-METHODOLOGY.md               ← the how and why, phase by phase — start here to learn it
-00-initial-brief/
-  brief-template.md           ← annotated skeleton for your next project's initial brief
-01-spec-templates/            ← skeletons for the 7-doc spec set (product, architecture,
-                                data model, implementation guide, deployment, trust &
-                                safety, decisions log) — placeholders only
-02-agent-manual/
-  AGENTS.template.md          ← THE reusable artifact: genericized operating manual for
-                                an autonomous build agent, independent of any spec set
-03-case-study-quepaso/        ← real, unedited artifacts — MVP scale, closed-source,
-                                the first run this kit was generalized from
-04-case-study-akasha/         ← real, unedited artifacts — larger scale, open-source,
-                                still active; its README notes where it diverged and why
-skill/
-  SKILL.md                    ← draft Claude Code skill automating brief → spec set →
-                                AGENTS.md (the spec-generation half, not the agent-manual
-                                half — see METHODOLOGY.md before using it unattended)
+```text
+Use Seeds to set up this project from the following idea: …
 ```
 
-## Genericity guarantee
+**Existing project or workspace**
 
-Every file outside the two case-study folders uses bracketed placeholders (`[like this]`,
-`{{LIKE_THIS}}`) instead of real content. Where QuePaso or Akasha is mentioned in
-`METHODOLOGY.md` or the templates, it's always a backward-pointing example ("QuePaso's
-rule was X — see the case study") explaining *why* a section exists, never content meant
-to be reused as-is. The case-study folders are intentionally project-specific — they're
-there to be read, not copied.
+```text
+Adopt Seeds in this project. Reuse its existing conventions and documentation;
+add only what is missing.
+```
+
+**Continue a Seeds project**
+
+```text
+Follow this repository's Seeds protocol and complete the next milestone.
+```
+
+Agents that support skills can install the self-contained [`seeds/`](seeds/) directory.
+Otherwise, point the agent at [`seeds/SKILL.md`](seeds/SKILL.md); it contains the same
+routing and links only to files inside that directory.
+
+## What Seeds establishes
+
+Seeds describes document **roles**, not a mandatory folder layout. On a new project it
+normally creates these small artifacts; on an existing project it maps the roles onto
+what is already there and adds only genuine gaps.
+
+| Role | Default artifact | Purpose |
+|---|---|---|
+| Agent entrypoint | `AGENTS.md` | Reading order, completion rules, commands, and project invariants |
+| Project truth | `docs/PROJECT.md` | Intent, non-goals, delivery shape, and important contracts |
+| Delivery plan | `docs/PLAN.md` | Milestone index and the one active milestone |
+| Decisions | `docs/DECISIONS.md` | Material choices, alternatives, and supersession history |
+| Current handoff | `docs/HANDOFF.md` | Rewritable statement of what is true and what happens next |
+| Session history | `docs/WORKLOG.md` | Append-only evidence, deviations, dead ends, and verification |
+
+Larger projects may split technical specifications, runbooks, policies, or individual
+milestones into separate files. Small projects should not create them by rote.
+
+## The rules that matter
+
+1. Establish explicit sources of truth.
+2. Ask before costly or hard-to-reverse product, data, privacy, security, or service
+   decisions; make simple reversible implementation choices autonomously.
+3. Work on one bounded milestone at a time.
+4. Give it externally verifiable acceptance criteria.
+5. Verify real behavior at the correct layer. User-visible work requires a walkthrough;
+   a mock of the thing being proved is not proof.
+6. Reconcile the plan and canonical documentation, record what happened, and leave a
+   clean handoff.
+
+Read the full [`method`](seeds/references/method.md) for the reasoning and scaling rules.
+The optional [`patterns`](seeds/references/patterns.md) are design heuristics learned
+while using Seeds; they are not universal requirements. The short history of
+[`why walkthroughs are required`](docs/why-walkthroughs.md) shows the failure that made
+that gate load-bearing.
+
+## Repository map
+
+```text
+seeds/
+  SKILL.md                  adaptive entrypoint: bootstrap, adopt, or operate
+  references/
+    method.md               the durable methodology
+    setup.md                greenfield and existing-repository setup procedure
+    patterns.md             optional architecture heuristics
+  assets/templates/         minimal artifacts an agent adapts rather than copies blindly
+docs/
+  why-walkthroughs.md       the failure that made real-flow verification non-negotiable
+scripts/check_repo.py       internal-link and skill-package checks
+```
+
+## Example project
+
+[`Akasha`](https://github.com/mauroibz/akasha) is a self-hosted personal library built
+with this method across dozens of agent sessions. Its history includes the verification
+failure that produced Seeds' walkthrough gate and shows how the method scales beyond an
+initial project plan.
+
+## License
+
+The Seeds methodology, documentation, templates, and visual assets are licensed under
+[Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+You may use, share, modify, and build on them for any purpose, including commercially,
+provided you credit Seeds, link this repository and the license, and identify changes.
+The small validation script is MIT licensed. See [`LICENSE`](LICENSE) for the attribution
+format and complete scope.
+
+The original QuePaso and Akasha artifacts remain available in Git history at commit
+`0682db0`. They were removed from the default branch because historical evidence should
+not dominate the reusable method.
