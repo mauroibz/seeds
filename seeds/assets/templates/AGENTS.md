@@ -52,7 +52,8 @@ the user explicitly asks for more.
 
 Before completion:
 
-1. Update canonical documentation for changed behavior or contracts.
+1. Update canonical documentation for changed behavior or contracts, covering at least
+   the sections the active milestone planned to change.
 2. Append material choices and deviations to `[DECISIONS]`; never rewrite history.
 3. Record delivered behavior and concise evidence in the milestone outcome.
 4. Review future milestones for affected assumptions.
