@@ -112,6 +112,7 @@ contract. It should contain:
 - deliverables or vertical slices;
 - externally verifiable acceptance criteria;
 - required test and verification layers;
+- canonical documents or sections the milestone is expected to change, named when known;
 - explicit non-scope;
 - risks or decisions that may need surfacing; and
 - an outcome section completed with actual evidence.
@@ -119,6 +120,19 @@ contract. It should contain:
 Plan in build order and keep future milestones thinner than the active one. Detail written
 too early fossilizes guesses. Expand a future milestone when it becomes active, using the
 implementation and earlier outcomes as evidence.
+
+A criterion is testable when a fresh agent could execute it without asking what it
+means: one observable behavior per criterion, the layer at which it must be checked, and
+— wherever the behavior is subtle, stateful, or easy to satisfy vacuously — a concrete
+given/when/then example. If no evidence the milestone could produce could observe the
+failure a criterion exists to prevent, rewrite the criterion or the evidence before
+implementation.
+
+A milestone is cheapest to correct before implementation starts. Review it in the order
+that lets you stop earliest: the objective first — if it targets the wrong problem, stop
+there — then the acceptance criteria, then the explicit non-scope. The most valuable
+catch is the missing criterion: the case the owner cares about most that no acceptance
+criterion mentions.
 
 Exactly one milestone should be active in a single worktree. Parallel work requires
 explicitly isolated branches/worktrees and project-specific coordination; Seeds does not
@@ -150,8 +164,30 @@ When the repository uses Git and the task permits commits, make small coherent c
 working states. Do not rewrite prior-session commits, and do not push unless the user asks.
 
 If a prerequisite defect blocks the milestone, repair it when the fix is bounded and
-necessary, then record the deviation. Do not pull future scope forward just because it is
-convenient.
+necessary, then record the deviation. Do not pull future scope forward just because it
+is convenient.
+
+Consequences of the milestone's own changes are in scope wherever they surface, even
+when the plan did not name them. Address a discovered impact when the fix is bounded —
+a backend change that alters frontend behavior, for example — or surface it with
+evidence as a risk or decision when it is not. Explicit non-scope fences off adjacent
+work, not the reach of the milestone's own changes.
+
+### Small work outside the active milestone
+
+A user may direct small work no milestone covers — a quick fix, a setting, a one-file
+patch. It follows the light path instead of milestone ceremony:
+
+1. Record it in the worklog with how it was verified, or `NOT RUN` if it was not.
+2. Verify it narrowly in the session, at the cheapest layer that can observe the change.
+3. Side work that is unverified, or that the next milestone builds on, is fully
+   verified before that milestone starts — a baseline must not stand on unverified
+   changes. All other side work is covered by that milestone's project-wide checks; if
+   no further milestone is planned, the handoff names the verification still owed.
+
+Work that outgrows a session-sized change stops being light-path: surface it and plan
+it as a milestone. Light-path work is recorded, never planned, so exactly one milestone
+stays active.
 
 ## 6. Verify behavior, not plausibility
 
@@ -191,7 +227,10 @@ reported as `NOT RUN` with the reason, and normally prevents completion.
 
 Before closing a milestone:
 
-1. update canonical documents for implemented contracts that changed;
+1. update canonical documents for every implemented contract that actually changed. The
+   milestone's named canonical updates are a floor, not a ceiling: impacts discovered
+   during implementation are reconciled too, and updates the plan did not name are
+   recorded as deviations;
 2. append material choices or deviations to the decisions record;
 3. fill the milestone outcome with delivered behavior, concise verification results,
    deviations, and relevant commits;

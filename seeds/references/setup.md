@@ -16,7 +16,8 @@ Use this procedure only for **bootstrap** or **adopt** mode. Read
 5. Choose stable internal vocabulary where renaming would be expensive. Record the rule;
    do not impose a particular strings or localization architecture unless appropriate.
 6. Create the smallest useful milestone plan. Detail the first milestone fully and leave
-   future milestones as outcome contracts.
+   future milestones as outcome contracts. Have the owner review the first milestone's
+   objective, acceptance criteria, and non-scope before execution.
 7. Create a short project-specific agent entrypoint with actual commands, document roles,
    completion gates, and concrete invariants.
 8. Initialize current handoff and append-only worklog. Verify all referenced paths and

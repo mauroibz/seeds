@@ -21,10 +21,19 @@ agent must read.]
 
 [Coherent vertical slices. Name exact paths only when known.]
 
+## Canonical updates
+
+[Canonical documents or sections this milestone expects to change, so the update is
+planned rather than discovered at close. A starting point for the close, not a limit;
+reconciliation follows what actually changed. An empty list is a valid answer.]
+
 ## Acceptance criteria
 
 - [Externally verifiable behavior, including important failure/edge conditions.]
 - [Relevant data-safety, security, performance, accessibility, or operational behavior.]
+
+Each criterion states one observable behavior and the layer that checks it; add a concrete
+given/when/then example where the behavior is subtle or easy to satisfy vacuously.
 
 ## Required tests
 
