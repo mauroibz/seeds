@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seeds — an operating loop for agentic builds</title>
+<meta name="description" content="Seeds is a lightweight operating method for projects carried by agents across many sessions: sources of truth, one active milestone, executable acceptance criteria, evidence at the layer where behavior can fail, and a clean handoff.">
+<meta property="og:title" content="Seeds — for agentic builds">
+<meta property="og:description" content="An operating loop for projects carried by agents across many sessions. Understand → decide → slice → build → verify → hand off.">
+<meta property="og:url" content="https://tryseeds.dev/">
+<meta property="og:image" content="https://mauroibz.github.io/seeds/assets/seeds-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <header>
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/seeds-logo-tagline-dark.svg">
+      <img class="logo" src="assets/seeds-logo-tagline.svg" alt="Seeds — for agentic builds" width="380" height="150">
+    </picture>
+  </header>
+
+  <p class="lede">Agents write code fast. What breaks projects is everything
+  around the code: requirements that lived in chat history, a green suite that
+  never opened the app, decisions nobody wrote down, and a session that died
+  before the next one knew where to start.</p>
+
+  <p class="lede">Seeds is a lightweight operating method for projects carried
+  by agents across many sessions. It establishes sources of truth, one active
+  milestone at a time, executable acceptance criteria, and a clean handoff to
+  the next session.</p>
+
+  <p class="loop">Understand &rarr; decide &rarr; slice &rarr; build &rarr; verify &rarr; hand off</p>
+
+  <section class="install">
+    <h2>Try it on one milestone</h2>
+    <p>Point any agent at the repo, or install the skill bundle:</p>
+<pre><code># Any agent
+Use Seeds to set up this project from the following idea: …
+Adopt Seeds in this project. Reuse its existing conventions; add only what is missing.
+
+# Or install the skill (Claude Code, Codex, Cursor, and 70+ more)
+npx skills add mauroibz/seeds</code></pre>
+    <p class="fine">Then: <em>“Adopt Seeds in this project, plan and execute one small
+    milestone I actually need. Stop and report after it.”</em></p>
+  </section>
+
+  <section>
+    <h2>What it establishes</h2>
+    <table>
+      <tr><th>Explicit sources of truth</th><td>No fact lives only in chat history. Authority is assigned by concern — the plan owns scope, migrations own schema, the handoff owns resume state.</td></tr>
+      <tr><th>One active milestone</th><td>Bounded outcome, verifiable criteria, explicit non-scope. Small user-directed fixes take a light path instead of milestone ceremony.</td></tr>
+      <tr><th>Proof, not plausibility</th><td>A mock of the thing being proved is not proof. User-visible work requires a real walkthrough against realistic data — because a product once shipped broken behind 122 passing tests.</td></tr>
+      <tr><th>Durable history</th><td>Append-only decisions and worklog; a rewritten handoff that states current reality and the exact next action for whoever — whatever — picks up next.</td></tr>
+    </table>
+  </section>
+
+  <section class="story">
+    <h2>The incident behind the gate</h2>
+    <p>After thirteen milestones, one Seeds-run application had 122 passing backend
+    tests, 38 passing frontend tests, 86% coverage — and failed its basic purpose.
+    No required check had ever run the application and watched the flow.</p>
+    <p><a href="https://github.com/mauroibz/seeds/blob/master/docs/why-walkthroughs.md">Read the full story →</a></p>
+  </section>
+
+  <section class="links">
+    <h2>Go deeper</h2>
+    <ul>
+      <li><a href="https://github.com/mauroibz/seeds">GitHub repository</a> — method, templates, and validator</li>
+      <li><a href="https://github.com/mauroibz/seeds/blob/master/seeds/references/method.md">The method</a> — the durable methodology</li>
+      <li><a href="https://github.com/mauroibz/seeds/blob/master/docs/faq.md">FAQ</a> — adoption questions, answered</li>
+      <li><a href="https://github.com/mauroibz/seeds/blob/master/CHANGELOG.md">Changelog</a> — versioned since 1.0.0</li>
+    </ul>
+    <p class="fine">Seeds is tool-agnostic: no CLI, no required folder layout, no lock-in.
+    Markdown files your agents read. CC BY 4.0.</p>
+    <p><a class="btn" href="https://github.com/mauroibz/seeds">Open on GitHub</a></p>
+  </section>
+</main>
+<footer>
+  <p>Seeds · <a href="https://github.com/mauroibz/seeds">github.com/mauroibz/seeds</a> · CC BY 4.0</p>
+</footer>
+</body>
+</html>

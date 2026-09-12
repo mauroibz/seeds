@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#fafafa"/>
+  <rect x="0" y="618" width="1200" height="12" fill="#4b8b52"/>
+  <text x="120" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="150" fill="#0b0b0b">Seeds</text>
+  <text x="124" y="400" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="42" fill="#52514e">for agentic builds</text>
+  <text x="124" y="490" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="30" fill="#4b8b52">understand &#8594; decide &#8594; slice &#8594; build &#8594; verify &#8594; hand off</text>
+  <path d="M980 210 C 930 180, 925 120, 980 80 C 1035 120, 1030 180, 980 210 Z" fill="#4b8b52"/>
+  <path d="M980 196 L 980 96" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+  <path d="M980 150 C 956 144, 944 130, 940 116 C 964 120, 976 134, 980 150 Z" fill="#6fb56a"/>
+  <path d="M980 170 C 1004 164, 1016 150, 1020 136 C 996 140, 984 154, 980 170 Z" fill="#6fb56a"/>
+</svg>

@@ -49,6 +49,38 @@ Agents that support skills can install the self-contained [`seeds/`](seeds/) dir
 Otherwise, point the agent at [`seeds/SKILL.md`](seeds/SKILL.md); it contains the same
 routing and links only to files inside that directory.
 
+## Install per agent
+
+The bundle is plain markdown — no CLI, no lock-in. Any of these works:
+
+```text
+npx skills add mauroibz/seeds
+```
+
+The [skills](https://skills.sh) CLI installs the bundle into Claude Code, Codex,
+Cursor, OpenCode, Gemini CLI, Copilot, Windsurf, and 70+ other agents (project or
+global scope, pick when prompted).
+
+<details>
+<summary>Manual install for a few common agents</summary>
+
+```text
+git clone https://github.com/mauroibz/seeds ~/.agent-skills/seeds
+ln -s ~/.agent-skills/seeds/seeds  ~/.claude/skills/seeds        # Claude Code
+ln -s ~/.agent-skills/seeds/seeds  ~/.codex/skills/seeds         # Codex
+ln -s ~/.agent-skills/seeds/seeds  ~/.config/agents/skills/seeds # Amp / Replit / universal
+ln -s ~/.agent-skills/seeds/seeds  ~/.hermes/skills/seeds        # Hermes Agent
+```
+
+Or simply commit the `seeds/` directory to the project (any agent that discovers
+`skills/*/SKILL.md` picks it up), or paste the repo URL into the agent and say
+"follow this repository's Seeds protocol".
+
+</details>
+
+A tool without a skills mechanism is not excluded: point it at `seeds/SKILL.md` in
+its first prompt, and it operates the same loop from the same documents.
+
 ## What Seeds establishes
 
 Seeds describes document **roles**, not a mandatory folder layout. On a new project it
@@ -98,6 +130,8 @@ seeds/
 docs/
   why-walkthroughs.md       the failure that made real-flow verification non-negotiable
   faq.md                    answers to the predictable adoption questions
+  index.html                tryseeds.dev — one-page companion site (GitHub Pages)
+  assets/                   site styles, favicon, and social card
 scripts/check_repo.py       internal-link and skill-package checks
 ```
 
