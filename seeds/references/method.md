@@ -138,6 +138,14 @@ Exactly one milestone should be active in a single worktree. Parallel work requi
 explicitly isolated branches/worktrees and project-specific coordination; Seeds does not
 infer that setup.
 
+Slicing happens twice. At planning time, the backlog is cut to one bounded milestone —
+the slice step of the loop: choosing the next outcome and writing its deliverables,
+acceptance criteria, and verification. During implementation, the milestone itself is
+cut into coherent, verifiable increments — sub-deliverables that can be completed and
+checked in sequence, leaving the worktree in a working state at each point. The first
+slice chooses what to build; the second keeps every intermediate state green and
+reviewable.
+
 ## 5. Operate one milestone at a time
 
 At the start of a session:

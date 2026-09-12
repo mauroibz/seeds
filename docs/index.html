@@ -28,11 +28,19 @@
   before the next one knew where to start.</p>
 
   <p class="lede">Seeds is a lightweight operating method for projects carried
-  by agents across many sessions. It establishes sources of truth, one active
-  milestone at a time, executable acceptance criteria, and a clean handoff to
-  the next session.</p>
+  by agents across many sessions — one pass, one milestone:</p>
 
-  <p class="loop">Understand &rarr; decide &rarr; slice &rarr; build &rarr; verify &rarr; hand off</p>
+  <ul class="looplist">
+    <li><strong>Understand</strong> — context from the repository, not chat history</li>
+    <li><strong>Decide</strong> — hard-to-reverse choices go to the owner; the rest proceed, recorded</li>
+    <li><strong>Slice</strong> — one bounded milestone, executable acceptance criteria</li>
+    <li><strong>Build</strong> — that milestone and nothing else, in verifiable increments</li>
+    <li><strong>Verify</strong> — proved where it can actually fail: the app, the data, never a mock</li>
+    <li><strong>Hand off</strong> — evidence plus a rewritten handoff; the next session starts from reality</li>
+  </ul>
+
+  <p class="loop">Small loop, high leverage: nothing lives only in chat history, green
+  means it actually works, and any agent, any session, picks up where the last one stopped.</p>
 
   <section class="install">
     <h2>Try it on one milestone</h2>

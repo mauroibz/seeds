@@ -15,3 +15,5 @@ First distribution candidate of the streamlined method.
 - Light path for small user-directed work outside the active milestone.
 - Consequences of a milestone's own changes are in scope even when unplanned.
 - Owner FAQ (`docs/faq.md`) and one-milestone evaluation on-ramp.
+- Annotated loop glosses in the README and site; slicing is defined at both planning
+  and implementation time.

@@ -6,14 +6,28 @@
 </p>
 
 Seeds is a lightweight operating method for projects carried by agents across many
-sessions. It grew out of software development, but the loop applies to any agentic project
-that can be divided into bounded outcomes and verified with evidence. Seeds gives a
-workspace explicit sources of truth, one active milestone, executable acceptance
-criteria, and a clean handoff to the next session.
+sessions. It grew out of software development, but the loop applies to any agentic
+project that can be divided into bounded outcomes and verified with evidence.
 
-The loop is deliberately small:
+The loop is deliberately small — one pass, one milestone:
 
-> Understand → decide → slice → build → verify → hand off.
+> Understand → decide → slice → build → verify → hand off
+
+- **Understand** — a fresh agent rebuilds context from the repository — the handoff,
+  the plan, the code — not from chat history.
+- **Decide** — choices that are costly or hard to reverse reach the owner with options
+  and a recommendation; reversible ones proceed autonomously and are recorded.
+- **Slice** — cut the backlog to one bounded milestone: a measurable outcome with
+  explicit deliverables and executable acceptance criteria.
+- **Build** — implement that milestone and nothing else, in verifiable increments that
+  keep every intermediate state green.
+- **Verify** — prove it at the layer where the behavior can actually fail: the running
+  application, the real database, never a mock of the thing claimed.
+- **Hand off** — record the evidence and rewrite the handoff, so the next session
+  starts from current reality, not archaeology.
+
+Small loop, high leverage: nothing lives only in chat history, green means the thing
+actually works, and any agent — in any session — picks up where the last one stopped.
 
 ## Start here
 
