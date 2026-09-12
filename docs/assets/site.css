@@ -123,6 +123,10 @@ h2.cardtitle { margin: 0 0 1rem; }
 .cta { font-size: 1.22rem; line-height: 1.55; margin: .4rem 0 1rem; padding: 0 .2rem; color: var(--ink); font-family: var(--display); }
 .cta em { font-style: italic; color: var(--green-deep); }
 .stakes-lede { margin: 1.2rem 0 0; }
+.step { margin: 1.6rem 0 .4rem; }
+.steplabel { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--green); margin: 0 0 .5rem; }
+.step pre { margin: .55rem 0; }
+.step .fine { margin: .2rem 0; }
 .establish .row p { text-align: justify; hyphens: auto; }
 h2 .kicker { display: block; font-family: -apple-system, sans-serif; font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; color: var(--green); margin-bottom: .35rem; font-weight: 700; }
 
