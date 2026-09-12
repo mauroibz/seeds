@@ -36,13 +36,13 @@ Give an agent one of these instructions.
 **New project**
 
 ```text
-Use Seeds to set up this project from the following idea: …
+Use Seeds (github.com/mauroibz/seeds) to set up this project from the following idea: …
 ```
 
 **Existing project or workspace**
 
 ```text
-Adopt Seeds in this project. Reuse its existing conventions and documentation;
+Adopt Seeds (github.com/mauroibz/seeds) in this project. Reuse its existing conventions;
 add only what is missing.
 ```
 
