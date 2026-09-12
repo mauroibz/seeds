@@ -1,6 +1,7 @@
 ---
 name: seeds
 description: Set up a new project for long-running agent work, adapt an existing repository or workspace to the Seeds methodology without duplicating its conventions, or operate an already-adopted Seeds project one verified milestone at a time. Use when the user explicitly asks for Seeds, agent-ready project setup, durable multi-session workflow, or adoption of this methodology.
+version: 1.0.0
 ---
 
 # Seeds

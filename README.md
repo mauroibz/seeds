@@ -38,6 +38,13 @@ add only what is missing.
 Follow this repository's Seeds protocol and complete the next milestone.
 ```
 
+**Evaluate on one milestone before adopting**
+
+```text
+Adopt Seeds in this project, then plan and execute one small milestone I actually
+need. Stop and report after it.
+```
+
 Agents that support skills can install the self-contained [`seeds/`](seeds/) directory.
 Otherwise, point the agent at [`seeds/SKILL.md`](seeds/SKILL.md); it contains the same
 routing and links only to files inside that directory.
@@ -90,6 +97,7 @@ seeds/
   assets/templates/         minimal artifacts an agent adapts rather than copies blindly
 docs/
   why-walkthroughs.md       the failure that made real-flow verification non-negotiable
+  faq.md                    answers to the predictable adoption questions
 scripts/check_repo.py       internal-link and skill-package checks
 ```
 
