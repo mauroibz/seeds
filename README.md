@@ -36,13 +36,13 @@ Give an agent one of these instructions.
 **New project**
 
 ```text
-Use Seeds (github.com/mauroibz/seeds) to set up this project from the following idea: …
+Use Seeds (tryseeds.dev/agent) to set up this project from the following idea: …
 ```
 
 **Existing project or workspace**
 
 ```text
-Adopt Seeds (github.com/mauroibz/seeds) in this project. Reuse its existing conventions;
+Adopt Seeds (tryseeds.dev/agent) in this project. Reuse its existing conventions;
 add only what is missing.
 ```
 
@@ -145,6 +145,7 @@ docs/
   why-walkthroughs.md       the failure that made real-flow verification non-negotiable
   faq.md                    answers to the predictable adoption questions
   index.html                tryseeds.dev — one-page companion site (GitHub Pages)
+  agent/                    tryseeds.dev/agent — redirect to this repository, for agent prompts
   assets/                   site styles, favicon, and social card
 scripts/check_repo.py       internal-link and skill-package checks
 ```
