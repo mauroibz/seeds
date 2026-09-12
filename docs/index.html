@@ -4,42 +4,66 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seeds — an operating loop for agentic builds</title>
-<meta name="description" content="Seeds is a lightweight operating method for projects carried by agents across many sessions: sources of truth, one active milestone, executable acceptance criteria, evidence at the layer where behavior can fail, and a clean handoff.">
+<meta name="description" content="Seeds is a lightweight operating method for projects carried by agents across many sessions — built so every session ends in a verified result.">
 <meta property="og:title" content="Seeds — for agentic builds">
-<meta property="og:description" content="An operating loop for projects carried by agents across many sessions. Understand → decide → slice → build → verify → hand off.">
+<meta property="og:description" content="A small loop for high leverage: nothing lives only in chat history, done means it actually works, and any agent, any session, picks up where the last one stopped.">
 <meta property="og:url" content="https://tryseeds.dev/">
-<meta property="og:image" content="https://mauroibz.github.io/seeds/assets/seeds-card.png">
+<meta property="og:image" content="https://tryseeds.dev/assets/seeds-card.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+
+<div class="bg" aria-hidden="true"><div class="soil"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="leaves" aria-hidden="true"><div class="leaf"><i></i></div><div class="leaf"><i></i></div><div class="leaf"><i></i></div><div class="leaf"><i></i></div><div class="leaf"><i></i></div><div class="leaf"><i></i></div></div>
 <main>
   <header>
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="assets/seeds-logo-tagline-dark.svg">
-      <img class="logo" src="assets/seeds-logo-tagline.svg" alt="Seeds — for agentic builds" width="380" height="150">
-    </picture>
+    <svg class="logo" viewBox="0 0 380 150" role="img" aria-label="Seeds — for agentic builds">
+      <text class="wordmark" x="20" y="100">Seeds</text>
+      <path class="logovine" d="M20,118 Q105,134 190,118" fill="none" stroke-width="2.5" stroke-linecap="round"/>
+      <path class="logoleaf left"  d="M71,124.7 C63,116 68,110 76,113 C74,120 71,124 71,124.7 Z" stroke-width="1"/>
+      <path class="logoleaf right" d="M139,124.7 C147,116 142,110 134,113 C136,120 139,124 139,124.7 Z" stroke-width="1"/>
+      <line class="logodiv" x1="205" y1="58" x2="205" y2="100" stroke-width="1"/>
+      <text class="tagline" x="222" y="94" letter-spacing="0.5">for agentic builds</text>
+    </svg>
+    <div class="dropzone"><span class="drop" aria-hidden="true"></span></div>
+    <span class="soilmark" aria-hidden="true"></span>
   </header>
 
-  <p class="lede">Seeds is a lightweight operating method for projects carried
-  by agents across many sessions — one pass, one milestone:</p>
+  <p class="overline">An operating method for agentic builds</p>
+  <h1 class="display">One small loop, run by <em>any agent</em>, carried across every session.</h1>
 
-  <ul class="looplist">
-    <li><strong>Understand</strong> — context from the repository, not chat history</li>
-    <li><strong>Decide</strong> — hard-to-reverse choices go to the owner; the rest proceed, recorded</li>
-    <li><strong>Slice</strong> — one bounded milestone, executable acceptance criteria</li>
-    <li><strong>Build</strong> — that milestone and nothing else, in verifiable increments</li>
-    <li><strong>Verify</strong> — proved where it can actually fail: the app, the data, never a mock</li>
-    <li><strong>Hand off</strong> — evidence plus a rewritten handoff; the next session starts from reality</li>
+  <p class="lede">Seeds is a lightweight operating method for projects carried by agents across many sessions — built so every session ends in a verified result:</p>
+
+  <div class="vinescene" id="vine">
+  <span class="stem" aria-hidden="true"></span>
+  <ul class="vine">
+    <li><i class="sprout" aria-hidden="true"><svg width="32" height="24" viewBox="0 0 32 24"><path d="M16 5 C 13 9, 10 11, 7 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><path d="M16 5 C 19 9, 22 11, 25 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><ellipse cx="7" cy="14" rx="6.5" ry="3.2" transform="rotate(-28 7 14)" style="fill: var(--green-bright);"/><ellipse cx="25" cy="14" rx="6.5" ry="3.2" transform="rotate(28 25 14)" style="fill: var(--green-bright); opacity: .78;"/></svg></i><strong>Understand</strong> — context from the project itself, not chat history</li>
+    <li><i class="sprout" aria-hidden="true"><svg width="32" height="24" viewBox="0 0 32 24"><path d="M16 5 C 13 9, 10 11, 7 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><path d="M16 5 C 19 9, 22 11, 25 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><ellipse cx="7" cy="14" rx="6.5" ry="3.2" transform="rotate(-28 7 14)" style="fill: var(--green-bright); opacity: .78;"/><ellipse cx="25" cy="14" rx="6.5" ry="3.2" transform="rotate(28 25 14)" style="fill: var(--green-bright);"/></svg></i><strong>Decide</strong> — hard-to-reverse choices go to you; the rest proceed, recorded</li>
+    <li><i class="sprout" aria-hidden="true"><svg width="32" height="24" viewBox="0 0 32 24"><path d="M16 5 C 13 9, 10 11, 7 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><path d="M16 5 C 19 9, 22 11, 25 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><ellipse cx="7" cy="14" rx="6.5" ry="3.2" transform="rotate(-28 7 14)" style="fill: var(--green-bright);"/><ellipse cx="25" cy="14" rx="6.5" ry="3.2" transform="rotate(28 25 14)" style="fill: var(--green-bright); opacity: .78;"/></svg></i><strong>Slice</strong> — one bounded outcome at a time, with criteria you can actually check</li>
+    <li><i class="sprout" aria-hidden="true"><svg width="32" height="24" viewBox="0 0 32 24"><path d="M16 5 C 13 9, 10 11, 7 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><path d="M16 5 C 19 9, 22 11, 25 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><ellipse cx="7" cy="14" rx="6.5" ry="3.2" transform="rotate(-28 7 14)" style="fill: var(--green-bright); opacity: .78;"/><ellipse cx="25" cy="14" rx="6.5" ry="3.2" transform="rotate(28 25 14)" style="fill: var(--green-bright);"/></svg></i><strong>Build</strong> — that outcome and nothing else, in pieces you can check as you go</li>
+    <li><i class="sprout" aria-hidden="true"><svg width="32" height="24" viewBox="0 0 32 24"><path d="M16 5 C 13 9, 10 11, 7 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><path d="M16 5 C 19 9, 22 11, 25 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><ellipse cx="7" cy="14" rx="6.5" ry="3.2" transform="rotate(-28 7 14)" style="fill: var(--green-bright);"/><ellipse cx="25" cy="14" rx="6.5" ry="3.2" transform="rotate(28 25 14)" style="fill: var(--green-bright); opacity: .78;"/></svg></i><strong>Verify</strong> — proved on the real thing, not a simulation of it</li>
+    <li><i class="sprout" aria-hidden="true"><svg width="32" height="24" viewBox="0 0 32 24"><path d="M16 5 C 13 9, 10 11, 7 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><path d="M16 5 C 19 9, 22 11, 25 12.5" style="stroke: var(--green); fill: none; stroke-width: 1.6; stroke-linecap: round;"/><ellipse cx="7" cy="14" rx="6.5" ry="3.2" transform="rotate(-28 7 14)" style="fill: var(--green-bright); opacity: .78;"/><ellipse cx="25" cy="14" rx="6.5" ry="3.2" transform="rotate(28 25 14)" style="fill: var(--green-bright);"/></svg></i><strong>Hand off</strong> — record the evidence and where things stand, so the next session starts from reality</li>
+
   </ul>
+  <span class="bud" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 26 26"><g transform="translate(13,13)"><ellipse rx="2.6" ry="6.5" style="fill: var(--green-bright);"/><ellipse rx="2.6" ry="6.5" transform="rotate(60)" style="fill: var(--green-bright); opacity: .8;"/><ellipse rx="2.6" ry="6.5" transform="rotate(120)" style="fill: var(--green-bright); opacity: .65;"/><circle r="3" style="fill: var(--green);"/></g></svg></span>
+  </div>
 
-  <p class="loop">Small loop, high leverage: nothing lives only in chat history, green
-  means it actually works, and any agent, any session, picks up where the last one stopped.</p>
+  <p class="loopclose">
+    <svg width="120" height="34" viewBox="0 0 120 34" fill="none" aria-hidden="true">
+      <path class="arc" d="M8 26 C 8 8, 112 8, 112 26" style="stroke: var(--green-bright); stroke-width: 2; stroke-linecap: round;"/>
+      <path d="M112 26 l -5 -6 m 5 6 l -7 -1" style="stroke: var(--green-bright); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none;"/>
+      <circle class="seed" cx="60" cy="7" r="3.2" style="fill: var(--green-bright);"/>
+    </svg>
+    hand off plants the next understand — the loop replants itself
+  </p>
 
-  <section class="install">
-    <h2>Try it on one milestone</h2>
-    <p>Point any agent at the repo, or install the skill bundle:</p>
+  <p class="loop">A small loop for high leverage: nothing lives only in chat history, done means it actually works, and any agent, any session, picks up where the last one stopped.</p>
+
+  <section class="install fade">
+    <h2><span class="kicker">Start here</span>Try it on one piece of real work</h2>
+    <p>Hand Seeds to any agent, or install the skill bundle:</p>
 <pre><code># Any agent
 Use Seeds to set up this project from the following idea: …
 Adopt Seeds in this project. Reuse its existing conventions; add only what is missing.
@@ -47,46 +71,69 @@ Adopt Seeds in this project. Reuse its existing conventions; add only what is mi
 # Or install the skill (Claude Code, Codex, Cursor, and 70+ more)
 npx skills add mauroibz/seeds</code></pre>
     <p class="lede">Then describe to your agent what you want to get done, and include at the end:</p>
-    <p class="fine"><em>“Adopt Seeds in this project. Plan and execute, stop and report after it.”</em></p>
+    <p class="cta"><em>“Adopt Seeds in this project. Plan and execute, stop and report after it.”</em></p>
   </section>
 
-  <section>
-    <h2>What it establishes</h2>
-    <p class="lede">Agents write code fast. What breaks projects is everything
-  around the code: requirements that lived in chat history, a green suite that
-  never opened the app, decisions nobody wrote down, and a session that died
-  before the next one knew where to start.</p>
-    <table>
-      <tr><th>Explicit sources of truth</th><td>No fact lives only in chat history. Authority is assigned by concern — the plan owns scope, migrations own schema, the handoff owns resume state.</td></tr>
-      <tr><th>One active milestone</th><td>Bounded outcome, verifiable criteria, explicit non-scope. Small user-directed fixes take a light path instead of milestone ceremony.</td></tr>
-      <tr><th>Proof, not plausibility</th><td>A mock of the thing being proved is not proof. User-visible work requires a real walkthrough against realistic data — because a product once shipped broken behind 122 passing tests.</td></tr>
-      <tr><th>Durable history</th><td>Append-only decisions and worklog; a rewritten handoff that states current reality and the exact next action for whoever — whatever — picks up next.</td></tr>
-    </table>
+  <section class="fade">
+    <h2><span class="kicker">The stakes</span>What it establishes</h2>
+    <div class="establish">
+      <div class="row"><h3>Explicit sources of truth</h3><p>No fact lives only in chat history. Every question has one authoritative answer: the plan owns scope, the records own history, the handoff owns what happens next.</p></div>
+      <div class="row"><h3>One outcome at a time</h3><p>A bounded piece of work with criteria you can check, and a clear line for what's not included. Small fixes take a light path instead of full ceremony.</p></div>
+      <div class="row"><h3>Proof, not plausibility</h3><p>A simulation of the thing being proved is not proof. Anything people can see or use gets exercised for real, on real data — because one product shipped broken behind 122 passing tests.</p></div>
+      <div class="row"><h3>Durable history</h3><p>Decisions get written down and never silently rewritten. A living handoff note states current reality and the exact next action for whoever — whatever — picks up next.</p></div>
+    </div>
+    <p class="lede stakes-lede">Agents work fast. What breaks projects is everything around the work: requirements that lived only in chat history, results that were never checked against reality, decisions nobody wrote down, and a session that died before the next one knew where to start.</p>
   </section>
 
-  <section class="story">
-    <h2>The incident behind the gate</h2>
-    <p>After thirteen milestones, one Seeds-run application had 122 passing backend
-    tests, 38 passing frontend tests, 86% coverage — and failed its basic purpose.
-    No required check had ever run the application and watched the flow.</p>
+  <section class="story card fade">
+    <h2 class="cardtitle"><span class="kicker">Field notes</span>Why Seeds exists</h2>
+    <div class="stats" aria-hidden="false">
+      <div class="stat"><b>122</b><span>passing backend tests</span></div>
+      <div class="stat"><b>38</b><span>passing frontend tests</span></div>
+      <div class="stat"><b>86%</b><span>coverage</span></div>
+      <div class="stat zero"><b>0</b><span>checks that ran the app</span></div>
+    </div>
+    <p class="pull">Everything passed. <em>The product did not work.</em></p>
+    <p>Seeds exists because of a day like that. In the project that led here, thirteen rounds of work produced an application with 122 passing backend tests, 38 passing frontend tests, 86% coverage — and it still failed its basic purpose. No required check had ever run the application and watched the flow.</p>
+    <p>The method was rebuilt so that can no longer happen quietly: nothing is "done" until it has been exercised for real, and the walkthrough gate exists to catch exactly this.</p>
     <p><a href="https://github.com/mauroibz/seeds/blob/master/docs/why-walkthroughs.md">Read the full story →</a></p>
   </section>
 
-  <section class="links">
-    <h2>Go deeper</h2>
+  <section class="links fade">
+    <h2><span class="kicker">Go deeper</span>The paper trail</h2>
     <ul>
       <li><a href="https://github.com/mauroibz/seeds">GitHub repository</a> — method, templates, and validator</li>
       <li><a href="https://github.com/mauroibz/seeds/blob/master/seeds/references/method.md">The method</a> — the durable methodology</li>
       <li><a href="https://github.com/mauroibz/seeds/blob/master/docs/faq.md">FAQ</a> — adoption questions, answered</li>
       <li><a href="https://github.com/mauroibz/seeds/blob/master/CHANGELOG.md">Changelog</a> — versioned since 1.0.0</li>
     </ul>
-    <p class="fine">Seeds is tool-agnostic: no CLI, no required folder layout, no lock-in.
-    Markdown files your agents read. CC BY 4.0.</p>
-    <p><a class="btn" href="https://github.com/mauroibz/seeds">Open on GitHub</a></p>
+    <p class="fine">Seeds is tool-agnostic: no CLI, no required folder layout, no lock-in. Markdown files your agents read. CC BY 4.0.</p>
+    <p class="btnrow"><a class="btn" href="https://github.com/mauroibz/seeds">Open on GitHub</a></p>
   </section>
 </main>
-<footer>
-  <p>Seeds · <a href="https://github.com/mauroibz/seeds">github.com/mauroibz/seeds</a> · CC BY 4.0</p>
-</footer>
+<footer><p>Seeds · <a href="https://github.com/mauroibz/seeds">github.com/mauroibz/seeds</a> · CC BY 4.0</p></footer>
+<script>
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.classList.add('loaded');
+  const vine = document.getElementById('vine');
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+  const grow = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { vine.classList.add('grown'); grow.disconnect(); } }), { threshold: .3 });
+  if (!reduced) grow.observe(vine); else vine.classList.add('grown');
+})();
+</script>
+
+<script>
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.classList.add('loaded');
+  const vine = document.getElementById('vine');
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+  const grow = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { vine.classList.add('grown'); grow.disconnect(); } }), { threshold: .3 });
+  if (!reduced) grow.observe(vine); else vine.classList.add('grown');
+})();
+</script>
 </body>
 </html>
