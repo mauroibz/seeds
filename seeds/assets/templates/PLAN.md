@@ -17,9 +17,11 @@ repository in its required end state.
 | M-001 | [One measurable outcome] | — | ready |
 | M-002 | [Thin future outcome; expand when activated] | M-001 | planned |
 
-Exactly one milestone is `ready`, `in_progress`, or `blocked` in one worktree. Completed
-milestones never return to `in_progress`; later regressions become prerequisite repairs or
-new milestones.
+Exactly one milestone is `ready`, `in_progress`, or `blocked` in one worktree.
+`accepted-pending` means verified except for human-only checks listed in the handoff; it
+does not hold the active slot. Completed milestones never return to `in_progress`; later
+regressions become prerequisite repairs or new milestones. At close, move a milestone's
+full text to `[PLAN ARCHIVE]` and keep only its row here.
 
 ## Active milestone
 

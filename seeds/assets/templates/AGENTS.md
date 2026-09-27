@@ -12,7 +12,7 @@ the user explicitly asks for more.
 2. Read, in order:
    - this file;
    - `[CURRENT HANDOFF]`;
-   - `[PLAN OR ACTIVE-MILESTONE POINTER]` and the active milestone;
+   - the index of `[PLAN]` and the active milestone (not closed milestones);
    - only the canonical sections and decisions named by that milestone;
    - the latest relevant entry in `[WORKLOG]`.
 3. Inspect the source material, existing work, and checks named by the milestone. Do not
@@ -38,7 +38,13 @@ the user explicitly asks for more.
 
 ## Verify
 
-- Run every check named by the active milestone plus `[PROJECT-WIDE CHECK COMMANDS]`.
+- While working, run focused checks: tests for the changed behavior, invariant checks for
+  any boundary touched, and `[FAST STATIC CHECKS]`.
+- When work leaves your hands (milestone or batch close, merge or ready pull request,
+  publishing, returning control), run every
+  check named by the active milestone plus `[PROJECT-WIDE CHECK COMMANDS]` once. Reuse
+  the last full green run recorded in the handoff as baseline when only documentation
+  changed since.
 - Every acceptance criterion must be executed at a layer capable of observing the claim.
   A mock of the exact unit or boundary under examination is not proof.
 - Test access/security boundaries as `[LEAST-PRIVILEGED RELEVANT CALLER]`.
@@ -46,7 +52,8 @@ the user explicitly asks for more.
   realistic data, perform the real flow, and record what happened and anything that
   looked wrong. Passing automated tests alone is insufficient.
 - A required check that cannot run must be recorded as `NOT RUN` with the reason and
-  normally leaves the milestone incomplete.
+  normally leaves the milestone incomplete. If only a person can run it, mark the
+  milestone `accepted-pending` and list the check under what the owner owes.
 
 ## Reconcile and hand off
 
@@ -90,6 +97,9 @@ If interrupted or blocked, preserve coherent work, append the worklog, update th
 with exact evidence and next action, and do not advance the milestone.
 
 ## Project invariants and commands
+
+Invariants are security, legal, or data-integrity guarantees only. Current product
+choices (vocabulary, flows, copy) live in `[DECISIONS]` and may change.
 
 - [Concrete project-specific invariant and the check that protects it.]
 - [Destructive/external actions that require the user.]

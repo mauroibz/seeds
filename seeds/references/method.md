@@ -72,12 +72,23 @@ Mark documents by status when ambiguity is possible:
 - **historical** — accurately records what was true at a date and is not an instruction;
 - **proposal** — evidence and options awaiting acceptance or rejection.
 
-Historical documents are dated, not silently rewritten. Accepted proposals feed their
+Historical documents are dated, not silently rewritten. Canonical documents are the
+opposite: rewrite them to current reality and keep no superseded text in them ("previous
+wording", closed rows kept "for the record"). History belongs only in the decisions record
+and the worklog. State each current fact in one place — a milestone's status lives in the
+plan index; other documents link to it rather than repeat it. Accepted proposals feed their
 decision into canonical documents; the proposal may remain as evidence.
 
 Settled decisions are binding until explicitly superseded through the project's change
 protocol. Implementation may expose a real reason to revisit one; that calls for evidence,
 an impact assessment, and user direction when material—not a silent divergence in code.
+
+Record where each decision came from and how hard it is. **Origin:** the owner, the agent
+by default (the owner was not consulted), or validated with real users. **Strength:** an
+invariant (security, legal, data integrity) or a current product choice. An agent-default
+product choice yields to any later owner direction or real-user evidence without further
+ceremony; record the change. Only invariants belong in the entrypoint's invariant list.
+One new decision may supersede several at once by listing their IDs.
 
 ## 3. Create only the documentation the project needs
 
@@ -116,6 +127,12 @@ contract. It should contain:
 - explicit non-scope;
 - risks or decisions that may need surfacing; and
 - an outcome section completed with actual evidence.
+
+Every non-scope item names the milestone that will pick it up, or says it is dropped;
+unowned non-scope is silently lost work. When grouping work, the scarce resource is often
+the human verification round, not agent time: items belong in one milestone when one
+walkthrough can validate them all, and unrelated items do not become one milestone merely
+to share a round.
 
 Plan in build order and keep future milestones thinner than the active one. Detail written
 too early fossilizes guesses. Expand a future milestone when it becomes active, using the
@@ -197,6 +214,36 @@ Work that outgrows a session-sized change stops being light-path: surface it and
 it as a milestone. Light-path work is recorded, never planned, so exactly one milestone
 stays active.
 
+### Iterating with the owner
+
+Later in a project the owner often shapes the product in conversation: reviewing screens,
+adjusting copy, reacting to real users. That is discovery, not building against a
+specification, and milestone ceremony per request makes every round slow. Work it as a
+feedback batch:
+
+1. Sort each piece of feedback: an **adjustment** that stays within the settled rules, a
+   **decision** that changes a rule or product behavior, or **new work** that needs its
+   own contracts, data, or security reasoning.
+2. Apply adjustments at conversation pace, running only focused checks each round.
+3. Record decisions when made and rewrite the canonical rule they change before building
+   on it, so later rounds are checked against the new rule, not the old one.
+4. Plan new work as milestones; do not build it inside the batch.
+5. Close the batch when the owner accepts it: full checks and the walkthrough once, one
+   worklog entry, a rewritten handoff.
+
+Individual rounds are not recorded; going back and forth is the point of the batch. The
+closing worklog entry names what was accepted and the alternatives the owner tried and
+rejected, so a later agent does not propose them again. A rejected option that shaped a
+rule goes into the decision instead. If the session ends before acceptance, the handoff
+lists what is applied, what is still pending, and what was rejected.
+
+Consistency across rounds comes from written rules and the tests that encode them, not
+from rerunning everything. If earlier criteria must keep holding while the UI changes,
+they must exist as canonical rules or tests that focused selection reaches. A round that
+breaks a rule the owner did not ask to change is a defect, not a new preference. When most
+of the owner's messages become corrections rather than "continue", say so and propose
+working in batches.
+
 ## 6. Verify behavior, not plausibility
 
 A milestone is fully verified, not fully attempted. Every acceptance criterion must be
@@ -218,6 +265,27 @@ or boundary under examination does not satisfy a correctness criterion. Mock tra
 time, randomness, filesystem, or an external service at its edge; do not mock the thing
 being claimed as working.
 
+### Verification cadence
+
+Every required check runs before completion, but not after every edit. Run each check at
+the cheapest moment that still catches what it guards:
+
+- **While working** — each increment or feedback round: the tests for the changed
+  behavior, the invariant checks for any boundary it touches (schema, access, audit,
+  money), and fast static checks.
+- **At a boundary** — when work leaves the agent's hands: closing a milestone or batch,
+  merging to the main line or marking a pull request ready, publishing, and returning
+  control after autonomous work. Run the full project-wide checks and the walkthrough
+  once. Commits inside a feature are increments, not boundaries; if the project commits
+  straight to the main line, the milestone or batch close is the boundary.
+- **Baseline** — the handoff records the commit of the last full green run. A new
+  milestone reuses it when nothing but documentation changed since; otherwise it runs the
+  full checks once before starting. In consecutive autonomous milestones, the close of one
+  is the baseline of the next.
+
+A focused failure outside the touched area means the change reached further than assumed:
+run the full checks then. Rerunning unchanged checks mid-increment proves nothing new.
+
 ### Walkthrough gate
 
 Any milestone that changes user-visible behavior remains incomplete until the agent runs
@@ -231,6 +299,23 @@ the application, performs the real flow end to end, and records:
 An observed defect left unrecorded is a handoff failure. A skipped required check must be
 reported as `NOT RUN` with the reason, and normally prevents completion.
 
+### Checks only a person can run
+
+Some evidence needs a human: real devices, production access, the owner's judgment. When
+that is all that remains, mark the milestone `accepted-pending`: everything the agent can
+observe is verified, and each owed check is listed in the handoff with its date. This
+releases the active-milestone pointer; the milestone is not done. A failed owner check
+becomes a prerequisite repair. With more than three checks owed, ask the owner to clear
+them before starting another milestone.
+
+### Periodic audit
+
+Milestone-by-milestone verification misses drift across the whole system. About every
+eight milestones, and before a public release, plan an audit milestone: compare the
+specification against the implementation and derive invariant checks from the full
+catalog (every table, function, route, or equivalent) rather than from examples. Findings
+become repairs or milestones.
+
 ## 7. Reconcile and hand off
 
 Before closing a milestone:
@@ -241,7 +326,8 @@ Before closing a milestone:
    recorded as deviations;
 2. append material choices or deviations to the decisions record;
 3. fill the milestone outcome with delivered behavior, concise verification results,
-   deviations, and relevant commits;
+   deviations, and relevant commits, then move the full milestone text to the plan
+   archive, leaving one line in the index;
 4. review downstream milestones for affected assumptions;
 5. append a worklog entry for the session;
 6. rewrite the handoff as concise current reality and the exact next action;
@@ -258,7 +344,8 @@ are dangerous.
 
 ## 8. Blocked and interrupted work
 
-When product intent is ambiguous, log the open question with options and a recommendation.
+When product intent is ambiguous, log the open question in the project source of truth
+with options and a recommendation.
 Stop only if no safe useful work remains. When the environment is broken, attempt bounded
 self-repair and record what was tried before declaring a blocker.
 
@@ -269,8 +356,11 @@ restart from a summary or discard unexplained changes.
 
 ## 9. Scale the mechanism only when pressure appears
 
-- Start with one plan. Split one file per milestone when the plan becomes costly to read
-  or historical paths begin to confuse current instructions.
+- Keep what a session reads at start small. Rough budgets: entrypoint about 150 lines,
+  handoff about 60, plan index plus active milestone about 400. Check them when closing a
+  milestone; exceeding one means something should move to an archive or a linked file.
+- Start with one plan. Closed milestones move to an archive at close; split one file per
+  milestone when even the open ones become costly to read.
 - Keep the handoff short even when the worklog grows. Agents read the latest relevant
   history, not the entire journal. Large worklogs may be rolled into dated archives
   without rewriting entries.
@@ -289,4 +379,4 @@ A Seeds milestone is done only when scope is delivered, every required criterion
 verified at the right layer, user-visible work passes the walkthrough gate, canonical
 documentation matches reality, material decisions and deviations are recorded, current
 state is handed off, and the repository is left coherent. Otherwise it remains in
-progress or is truthfully blocked.
+progress, is `accepted-pending` on named human checks, or is truthfully blocked.

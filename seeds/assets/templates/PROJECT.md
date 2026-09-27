@@ -72,3 +72,5 @@ or policy only when this section can no longer stay precise and navigable.]
 | ID | Question | Blocking for | Options / recommendation |
 |---|---|---|---|
 | O-001 | [Question] | [Milestone or decision point] | [Candidates and recommended default] |
+
+When answered, record the decision and remove the row.

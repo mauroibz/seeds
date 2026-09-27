@@ -3,6 +3,25 @@
 The Seeds method bundle is versioned in [`seeds/SKILL.md`](seeds/SKILL.md) frontmatter.
 Adopters can compare their installed copy's version against this list.
 
+## 1.1.0 — 2026-09-27
+
+From the retrospective of a 40-milestone project (Pliego).
+
+- Feedback batches for iterating with the owner: sort, adjust with focused checks,
+  rewrite the rule a decision changes, verify fully once at acceptance.
+- Verification cadence: focused checks while working, full checks once per boundary,
+  last full green run recorded in the handoff and reused as baseline.
+- `accepted-pending` status for milestones held only by human checks, with a list of
+  what the owner owes in the handoff.
+- Decisions carry origin and strength; only invariants go in the entrypoint's invariant
+  list; one decision may supersede several.
+- Canonical documents are rewritten and state each fact once; only decisions and
+  worklogs are append-only. Open questions move from the decisions template to the
+  project specification.
+- Closed milestones move to an archive at close; rough read budgets for session start.
+- Non-scope names who picks it up; milestones group by shared human verification round.
+- Periodic audit milestone; invariant checks enumerated from the catalog (pattern).
+
 ## 1.0.0 — 2026-09-12
 
 First distribution candidate of the streamlined method.

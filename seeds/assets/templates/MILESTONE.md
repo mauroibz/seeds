@@ -54,7 +54,7 @@ incomplete when required evidence is unavailable.
 
 ## Explicit non-scope
 
-- [Tempting adjacent work that belongs elsewhere.]
+- [Tempting adjacent work, and the milestone that will pick it up, or "dropped".]
 
 ## Risks and decisions to surface
 

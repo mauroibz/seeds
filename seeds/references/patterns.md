@@ -14,6 +14,13 @@ This does not mean every project must enforce access in a database. Use the serv
 database policies, gateway, or other layer that actually controls access, and document why
 it is trusted.
 
+## Enumerate invariant checks from the catalog
+
+An invariant test that checks a few examples passes while a newly added function, table,
+or route escapes it. Where the platform can list them (database catalog, router, API
+schema), iterate the full list and assert the invariant for each item, so new surface is
+covered by default and an exemption has to be written down.
+
 ## Preserve raw signals when future interpretation matters
 
 Votes, reports, reactions, and audit events are often more useful as rows/events than as a

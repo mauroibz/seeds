@@ -11,18 +11,15 @@ scope choices. Routine reversible implementation details do not need permanent e
 
 - **Date:** [YYYY-MM-DD]
 - **Status:** accepted
+- **Origin:** [owner | agent default | validated with users]
+- **Strength:** [invariant | product choice]
 - **Decision:** [What was chosen.]
 - **Rationale:** [Why it fits the product and constraints.]
 - **Alternatives:** [Material alternatives and why they were rejected.]
 - **Impact:** [Affected specifications, migrations, milestones, or operations.]
 
-To change a decision, append a new entry and mark it as superseding the old ID. Do not
-delete or silently rewrite the original reasoning.
+To change decisions, append a new entry listing every ID it supersedes. Do not delete or
+silently rewrite the original reasoning. An agent-default product choice yields to later
+owner direction or real-user evidence.
 
-## Open questions
-
-| ID | Question | Blocking for | Options / recommendation | Status |
-|---|---|---|---|---|
-| O-001 | [Question] | [Milestone] | [Candidates and recommended default] | open |
-
-When answered, retain the row and link the resulting decision ID.
+Open questions are current state, not history: they live in `[PROJECT]` until answered.

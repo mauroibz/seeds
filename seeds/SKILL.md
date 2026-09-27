@@ -1,7 +1,7 @@
 ---
 name: seeds
 description: Set up a new project for long-running agent work, adapt an existing repository or workspace to the Seeds methodology without duplicating its conventions, or operate an already-adopted Seeds project one verified milestone at a time. Use when the user explicitly asks for Seeds, agent-ready project setup, durable multi-session workflow, or adoption of this methodology.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Seeds
@@ -44,10 +44,16 @@ decision; none of them is a default requirement.
 - A milestone is complete only when every acceptance criterion has been executed and the
   required evidence exists. User-visible behavior requires a real walkthrough against
   realistic data. Never treat a mock of the unit or boundary being proved as proof.
-- Preserve history. Decisions and worklogs are append-only; supersede or correct them
-  with new entries. `HANDOFF.md` is intentionally rewritten because it represents only
-  current reality.
-- Stop after one milestone unless the user explicitly asks for broader continuation.
+  When only a person can supply the remaining evidence, the milestone is
+  `accepted-pending`, not complete.
+- Run focused checks while working and the full checks once when work leaves the
+  agent's hands (milestone or batch close, merge or ready pull request, publishing,
+  returning control), not after every change or commit.
+- Only decisions and worklogs are append-only history; supersede or correct them with
+  new entries. Canonical documents, including the plan and `HANDOFF.md`, are rewritten
+  to current reality, and each current fact lives in one place.
+- Stop after one milestone, or one accepted feedback batch, unless the user explicitly
+  asks for broader continuation.
 - Do not push, deploy, purchase, create external accounts, or perform destructive
   recovery unless the user's current request authorizes it.
 
