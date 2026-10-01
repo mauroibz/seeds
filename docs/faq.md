@@ -33,6 +33,22 @@ No. Adoption is a mapping exercise: an issue tracker can be the plan, an ADR log
 the decisions record, an operating guide can own the commands. The entrypoint links to
 them; nothing is rewritten to fit a template.
 
+## If the handoff is rewritten, where is the history?
+
+In the decisions record and the worklog, which are append-only, in archived milestone
+outcomes, and in version control. The handoff is a short pointer to current state, kept
+current on purpose because a stale one misleads the next session. It is never the record
+of what happened.
+
+## Does Seeds work for teams?
+
+Yes. One author, or several working in sequence, use the default layout. When several
+branches carry milestones at the same time, Seeds switches to a layout with no shared
+file to rewrite: each milestone is its own file and holds its branch's resume state,
+there is no standalone handoff between deliveries, and each worklog entry and decision is
+its own file named by date and slug. A merge brings only new files. See "Parallel
+branches" in [the method](../seeds/references/method.md#parallel-branches).
+
 ## Why require a walkthrough when the test suite passes?
 
 Because green suites have shipped broken products. In one real incident, 122 passing
@@ -59,7 +75,9 @@ Spec-driven frameworks center a living requirements corpus and agreement before
 implementation; Seeds centers execution evidence, decision governance, and resume state
 across sessions — including everything that happens after the code is written. The two
 compose; Seeds does not require a requirements corpus or a fixed taxonomy, while they overlap
-in the middle: plan-as-markdown in the repository, and human review before work. 
+in the middle: plan-as-markdown in the repository, and human review before work. With
+OpenSpec, for example, a change folder can serve as the milestone, and Seeds adds the
+acceptance criteria, verification, walkthrough, and decisions around it.
 
 ## What if the project doesn't use Git?
 

@@ -152,8 +152,8 @@ catch is the missing criterion: the case the owner cares about most that no acce
 criterion mentions.
 
 Exactly one milestone should be active in a single worktree. Parallel work requires
-explicitly isolated branches/worktrees and project-specific coordination; Seeds does not
-infer that setup.
+explicitly isolated branches or worktrees and the file layout in
+[Parallel branches](#parallel-branches).
 
 Slicing happens twice. At planning time, the backlog is cut to one bounded milestone —
 the slice step of the loop: choosing the next outcome and writing its deliverables,
@@ -208,7 +208,8 @@ patch. It follows the light path instead of milestone ceremony:
 3. Side work that is unverified, or that the next milestone builds on, is fully
    verified before that milestone starts — a baseline must not stand on unverified
    changes. All other side work is covered by that milestone's project-wide checks; if
-   no further milestone is planned, the handoff names the verification still owed.
+   no further milestone is planned, the handoff (or, with parallel branches, the plan's
+   future intent) names the verification still owed.
 
 Work that outgrows a session-sized change stops being light-path: surface it and plan
 it as a milestone. Light-path work is recorded, never planned, so exactly one milestone
@@ -330,7 +331,8 @@ Before closing a milestone:
    archive, leaving one line in the index;
 4. review downstream milestones for affected assumptions;
 5. append a worklog entry for the session;
-6. rewrite the handoff as concise current reality and the exact next action;
+6. rewrite the handoff as concise current reality and the exact next action (with
+   parallel branches, empty the milestone's handoff section instead);
 7. update the active-milestone pointer only after implementation is verified; and
 8. run the project's final checks and leave the worktree in the state its repository
    policy requires.
@@ -340,7 +342,8 @@ criterion was verified, deviations, anything requiring a human, and what comes n
 
 The decisions record and worklog are append-only history. Correct them with later entries.
 The handoff is different: it is deliberately rewritten because stale current-state notes
-are dangerous.
+are dangerous. It is never history. History lives in decisions, the worklog, archived
+milestone outcomes, and version control.
 
 ## 8. Blocked and interrupted work
 
@@ -372,6 +375,31 @@ restart from a summary or discard unexplained changes.
 - Split recovery detail out of `AGENTS.md` when the entrypoint stops being quick to reread.
   The entrypoint remains the binding map; an expanded workflow handles interruption and
   rare recovery cases.
+
+### Parallel branches
+
+When two or more branches or worktrees carry milestones at the same time, a shared file
+that every branch rewrites or appends to conflicts at each merge. Switch to this layout
+then, not before:
+
+1. **One milestone per branch, in its own file.** The plan index gains a `Branch` column.
+   Row status changes on the main line at merge.
+2. **Resume state lives in the milestone.** While work is in flight, the milestone's
+   `Handoff` section holds what `HANDOFF.md` would: next action, verification state,
+   dirty files, blockers. Only that branch edits it.
+3. **No standalone handoff between deliveries.** At close, the handoff section is emptied
+   and its content lands where it belongs: the last full green run and anything owed by
+   the owner in the outcome; known-and-left issues in the plan's future intent or the
+   project's open questions. A fresh session on the main line reads the entrypoint, the
+   plan index, the next `ready` milestone, the latest closed outcome, and any
+   `accepted-pending` milestone.
+4. **One file per history entry.** Worklog entries go in `worklog/YYYY-MM-DD-<slug>.md`
+   and decisions in `decisions/YYYY-MM-DD-<slug>.md`; a decision's ID is its filename.
+   Append-only means an entry file is never edited. Existing single-file records stay
+   intact as the first, closed entry.
+
+A merge then brings only new files plus the closed milestone; the main line updates the
+plan row and nothing else. A single-author project keeps the default layout.
 
 ## Definition of done
 

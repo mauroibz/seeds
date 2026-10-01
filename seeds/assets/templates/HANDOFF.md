@@ -31,3 +31,6 @@
 
 State each fact once. This file is a current-state pointer, not a transcript. Durable decisions belong in the
 decisions record; session evidence and dead ends belong in the append-only worklog.
+
+With parallel branches this file is not used; resume state lives in each milestone. See
+the method's "Parallel branches" section.

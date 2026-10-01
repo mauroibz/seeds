@@ -3,6 +3,17 @@
 The Seeds method bundle is versioned in [`seeds/SKILL.md`](seeds/SKILL.md) frontmatter.
 Adopters can compare their installed copy's version against this list.
 
+## 1.2.0 — 2026-10-01
+
+Parallel work by several people, from external feedback.
+
+- Parallel branches layout, used only when branches carry milestones at the same time:
+  one milestone file per branch, resume state inside the milestone, no standalone
+  handoff between deliveries, one file per worklog entry and per decision.
+- `Branch` column in the plan index; handoff section in the milestone template.
+- The method states where history lives; the handoff is never history.
+- FAQ: history versus handoff, teams, and composing with OpenSpec.
+
 ## 1.1.0 — 2026-09-27
 
 From the retrospective of a 40-milestone project (Pliego).

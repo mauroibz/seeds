@@ -11,7 +11,8 @@ the user explicitly asks for more.
 1. Run `[STATUS COMMAND]` and inspect recent history.
 2. Read, in order:
    - this file;
-   - `[CURRENT HANDOFF]`;
+   - `[CURRENT HANDOFF]` (with parallel branches: the handoff section of this branch's
+     milestone);
    - the index of `[PLAN]` and the active milestone (not closed milestones);
    - only the canonical sections and decisions named by that milestone;
    - the latest relevant entry in `[WORKLOG]`.

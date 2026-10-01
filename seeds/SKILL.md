@@ -1,7 +1,7 @@
 ---
 name: seeds
 description: Set up a new project for long-running agent work, adapt an existing repository or workspace to the Seeds methodology without duplicating its conventions, or operate an already-adopted Seeds project one verified milestone at a time. Use when the user explicitly asks for Seeds, agent-ready project setup, durable multi-session workflow, or adoption of this methodology.
-version: 1.1.0
+version: 1.2.0
 ---
 
 # Seeds
@@ -51,7 +51,8 @@ decision; none of them is a default requirement.
   returning control), not after every change or commit.
 - Only decisions and worklogs are append-only history; supersede or correct them with
   new entries. Canonical documents, including the plan and `HANDOFF.md`, are rewritten
-  to current reality, and each current fact lives in one place.
+  to current reality, and each current fact lives in one place. With parallel branches,
+  follow the method's "Parallel branches" layout so no shared file is rewritten.
 - Stop after one milestone, or one accepted feedback batch, unless the user explicitly
   asks for broader continuation.
 - Do not push, deploy, purchase, create external accounts, or perform destructive

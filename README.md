@@ -111,7 +111,9 @@ what is already there and adds only genuine gaps.
 | Session history | `docs/WORKLOG.md` | Append-only evidence, deviations, dead ends, and verification |
 
 Larger projects may split technical specifications, runbooks, policies, or individual
-milestones into separate files. Small projects should not create them by rote.
+milestones into separate files. Small projects should not create them by rote. When
+several branches carry milestones at once, resume state lives in each milestone and every
+decision and worklog entry is its own file, so a merge never rewrites shared state.
 
 ## The rules that matter
 

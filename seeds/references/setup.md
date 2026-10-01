@@ -36,7 +36,8 @@ Adoption is a mapping exercise, not a rewrite.
    - briefs, product/architecture material, source indexes, decisions, plans, issues, and
      operating guides;
    - production tools, validation commands, automation, data inputs, and delivery setup;
-   - current branch, worktree status, and recent history.
+   - current branch, worktree status, recent history, and other active branches or
+     worktrees carrying parallel work.
 2. Classify existing artifacts by role and status: canonical, historical, or proposal.
    Determine authority separately for product intent, technical contracts, schema,
    milestone scope, current state, and history.
@@ -73,6 +74,18 @@ docs/
   DECISIONS.md
   HANDOFF.md
   WORKLOG.md
+```
+
+With parallel branches (see the method's "Parallel branches"):
+
+```text
+AGENTS.md
+docs/
+  PROJECT.md
+  PLAN.md
+  milestones/
+  decisions/
+  worklog/
 ```
 
 Add individual milestone files, technical specs, safety policies, runbooks, or generated

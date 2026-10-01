@@ -60,7 +60,13 @@ incomplete when required evidence is unavailable.
 
 - [Question that needs evidence or user direction, and when it becomes blocking.]
 
+## Handoff (parallel branches only)
+
+[While in flight: exact next action, verification state, dirty files, blockers. Only this
+branch edits it. Emptied at close.]
+
 ## Outcome
 
 _Not started. On completion record delivered behavior, concise actual verification
-results, commits, deviations/decisions, observed issues, and downstream impact._
+results, commits, deviations/decisions, observed issues, and downstream impact. With
+parallel branches, also the last full green run and any checks owed by the owner._

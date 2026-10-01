@@ -22,4 +22,7 @@ To change decisions, append a new entry listing every ID it supersedes. Do not d
 silently rewrite the original reasoning. An agent-default product choice yields to later
 owner direction or real-user evidence.
 
+With parallel branches, write one file per decision under `decisions/`
+(`YYYY-MM-DD-<slug>.md`); the filename is the ID, so branches cannot collide.
+
 Open questions are current state, not history: they live in `[PROJECT]` until answered.

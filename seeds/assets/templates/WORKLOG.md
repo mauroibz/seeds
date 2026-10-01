@@ -4,6 +4,7 @@
 
 Read the latest relevant entry, not the entire file. Never edit or delete prior entries;
 append a correction when needed. Large logs may be moved intact into dated archives.
+With parallel branches, write one file per entry under `worklog/` instead.
 
 ## [YYYY-MM-DD] — [milestone or side work] ([in progress | complete | blocked | interrupted])
 
