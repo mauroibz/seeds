@@ -3,6 +3,16 @@
 The Seeds method bundle is versioned in [`seeds/SKILL.md`](seeds/SKILL.md) frontmatter.
 Adopters can compare their installed copy's version against this list.
 
+## 1.2.1 — 2026-10-01
+
+From a two-branch trial run.
+
+- Parallel branches: the branch closes its milestone and lists in the outcome what the
+  main line must change in shared files; the main line applies that list at merge.
+- An interpretation awaiting owner confirmation is a pending decision and does not hold
+  the milestone open.
+- Append-only starts at merge; a branch extends shared tooling by adding files.
+
 ## 1.2.0 — 2026-10-01
 
 Parallel work by several people, from external feedback.

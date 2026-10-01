@@ -69,4 +69,5 @@ branch edits it. Emptied at close.]
 
 _Not started. On completion record delivered behavior, concise actual verification
 results, commits, deviations/decisions, observed issues, and downstream impact. With
-parallel branches, also the last full green run and any checks owed by the owner._
+parallel branches, also the last full green run, anything owed by the owner, and an
+**At merge** list of changes the main line must make to shared files._

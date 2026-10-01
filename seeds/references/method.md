@@ -387,19 +387,25 @@ then, not before:
 2. **Resume state lives in the milestone.** While work is in flight, the milestone's
    `Handoff` section holds what `HANDOFF.md` would: next action, verification state,
    dirty files, blockers. Only that branch edits it.
-3. **No standalone handoff between deliveries.** At close, the handoff section is emptied
-   and its content lands where it belongs: the last full green run and anything owed by
-   the owner in the outcome; known-and-left issues in the plan's future intent or the
-   project's open questions. A fresh session on the main line reads the entrypoint, the
-   plan index, the next `ready` milestone, the latest closed outcome, and any
-   `accepted-pending` milestone.
+3. **No standalone handoff between deliveries.** At close the branch marks its milestone
+   `done` (or `accepted-pending`), empties the handoff section, and records in the outcome
+   the last full green run, anything owed by the owner, and an **At merge** list: every
+   change the main line must make to shared files (plan future intent, open questions,
+   entrypoint commands, canonical updates). An interpretation awaiting owner confirmation
+   is a decision marked pending confirmation; it does not hold the milestone open. A
+   fresh session on the main line reads the entrypoint, the plan index, the next `ready`
+   milestone, the latest closed outcome, and any `accepted-pending` milestone.
 4. **One file per history entry.** Worklog entries go in `worklog/YYYY-MM-DD-<slug>.md`
    and decisions in `decisions/YYYY-MM-DD-<slug>.md`; a decision's ID is its filename.
-   Append-only means an entry file is never edited. Existing single-file records stay
-   intact as the first, closed entry.
+   Append-only starts at merge: once on the main line an entry file is never edited.
+   Existing single-file records stay intact as the first, closed entry.
+5. **Extend shared tooling by adding files.** A branch adds its own check, script, or
+   page rather than editing a shared one. A shared file that must change goes in the
+   At merge list.
 
-A merge then brings only new files plus the closed milestone; the main line updates the
-plan row and nothing else. A single-author project keeps the default layout.
+A merge then brings only new files plus the closed milestone. The main line applies the
+At merge list, moves pending confirmations to the open questions, updates the plan row,
+and archives the milestone. A single-author project keeps the default layout.
 
 ## Definition of done
 
