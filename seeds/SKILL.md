@@ -1,7 +1,7 @@
 ---
 name: seeds
 description: Set up a new project for long-running agent work, adapt an existing repository or workspace to the Seeds methodology without duplicating its conventions, or operate an already-adopted Seeds project one verified milestone at a time. Use when the user explicitly asks for Seeds, agent-ready project setup, durable multi-session workflow, or adoption of this methodology.
-version: 1.2.1
+version: 1.3.0
 ---
 
 # Seeds
@@ -41,6 +41,9 @@ decision; none of them is a default requirement.
   project, verify it, and record material reasoning without blocking unnecessarily.
 - Treat settled decisions as binding until the user or the recorded change protocol
   explicitly supersedes them. Do not relitigate or diverge from them silently.
+- Speak to the owner in content, not identifiers. A decision, milestone, or open question
+  named in a report, question, or handoff carries what it says in plain words beside its
+  ID; a closed milestone is named by what it delivered.
 - A milestone is complete only when every acceptance criterion has been executed and the
   required evidence exists. User-visible behavior requires a real walkthrough against
   realistic data. Never treat a mock of the unit or boundary being proved as proof.

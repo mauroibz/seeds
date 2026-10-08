@@ -16,11 +16,15 @@ scope choices. Routine reversible implementation details do not need permanent e
 - **Decision:** [What was chosen.]
 - **Rationale:** [Why it fits the product and constraints.]
 - **Alternatives:** [Material alternatives and why they were rejected.]
-- **Impact:** [Affected specifications, migrations, milestones, or operations.]
+- **Affects:** [Canonical sections this decision constrains (`path#heading`), plus any
+  migrations, milestones, or operations. Each named section states the resulting rule.]
 
 To change decisions, append a new entry listing every ID it supersedes. Do not delete or
-silently rewrite the original reasoning. An agent-default product choice yields to later
+silently rewrite the original reasoning. Rewrite the canonical sections the superseded
+entries affected in the same change. An agent-default product choice yields to later
 owner direction or real-user evidence.
+
+When citing a decision to the owner, put its content beside the ID.
 
 With parallel branches, write one file per decision under `decisions/`
 (`YYYY-MM-DD-<slug>.md`); the filename is the ID, so branches cannot collide.

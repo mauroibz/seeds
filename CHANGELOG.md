@@ -3,6 +3,20 @@
 The Seeds method bundle is versioned in [`seeds/SKILL.md`](seeds/SKILL.md) frontmatter.
 Adopters can compare their installed copy's version against this list.
 
+## 1.3.0 — 2026-10-08
+
+Legibility as a project ages: long-running projects accumulated IDs the owner could no
+longer read and history the agent reread every session.
+
+- Reports, handoffs, and questions to the owner give every cited ID its content in plain
+  words; closed milestones are named by what they delivered.
+- Decisions name the canonical sections they constrain (`Affects`, replacing `Impact`);
+  those sections state the rule in force beside the decision ID, and are rewritten when
+  the decision is superseded.
+- Session start reads the rules from canonical sections instead of the decisions record,
+  and reads the worklog only when the handoff points to it or the last session was
+  interrupted.
+
 ## 1.2.1 — 2026-10-01
 
 From a two-branch trial run.

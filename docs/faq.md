@@ -86,6 +86,7 @@ exists; everything else — roles, criteria, verification, handoff — works unc
 
 ## How much must a fresh agent read at session start?
 
-The entrypoint, the current handoff, the active milestone, the decisions and canonical
-sections it names, and the latest relevant worklog entry. Not the whole journal. That
+The entrypoint, the current handoff, the active milestone, and the canonical sections it
+names, which state the decisions in force. The worklog only when the handoff points to an
+entry or the last session was interrupted. Not the whole journal. That
 bounded read is the point: any session, any agent, the same context.

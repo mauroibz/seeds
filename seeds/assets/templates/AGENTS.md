@@ -14,8 +14,10 @@ the user explicitly asks for more.
    - `[CURRENT HANDOFF]` (with parallel branches: the handoff section of this branch's
      milestone);
    - the index of `[PLAN]` and the active milestone (not closed milestones);
-   - only the canonical sections and decisions named by that milestone;
-   - the latest relevant entry in `[WORKLOG]`.
+   - only the canonical sections named by that milestone, where the rules in force are
+     stated; open a decision only for its rationale;
+   - a `[WORKLOG]` entry only when the handoff points to one or the last session was
+     interrupted.
 3. Inspect the source material, existing work, and checks named by the milestone. Do not
    rely on a prior summary in place of current evidence.
 4. Reconcile unexplained workspace or version-control changes before editing. Preserve
@@ -70,7 +72,9 @@ Before completion:
 7. Run final checks and leave the worktree `[REQUIRED END STATE]`.
 
 Then report: what completed, how each criterion was verified, deviations, anything that
-needs the user, and what comes next.
+needs the user, and what comes next. Write it in plain words: every decision, milestone,
+or question cited carries its content beside its ID, and closed milestones are named by
+what they delivered.
 
 ## Authority by concern
 

@@ -90,6 +90,13 @@ product choice yields to any later owner direction or real-user evidence without
 ceremony; record the change. Only invariants belong in the entrypoint's invariant list.
 One new decision may supersede several at once by listing their IDs.
 
+Make each decision in force visible where it applies. A decision names the canonical
+sections it constrains, and each of those sections states the resulting rule in its own
+words with the decision ID beside it. An agent learns the rule from the section; it opens
+the decision only for the rationale or to weigh revisiting it. When a decision is
+superseded, rewrite the sections it affected in the same change, so a canonical document
+never states a rule that is no longer in force.
+
 ## 3. Create only the documentation the project needs
 
 Seeds requires roles, not seven fixed documents. A small project normally needs:
@@ -169,7 +176,7 @@ At the start of a session:
 
 1. inspect repository status and recent history;
 2. read the agent entrypoint, current handoff, active milestone, and only the canonical
-   sections and decisions it references;
+   sections it references, where the rules in force are stated;
 3. inspect the actual source material, existing work, and checks named by the milestone;
 4. reconcile unexplained worktree changes before editing; and
 5. confirm the milestone is ready and its prerequisites are satisfied.
@@ -340,6 +347,19 @@ Before closing a milestone:
 Then stop and report in language appropriate to the owner: what completed, how each
 criterion was verified, deviations, anything requiring a human, and what comes next.
 
+### Report in the owner's terms
+
+Reports, handoffs, and questions are read by someone who does not keep the project's
+identifiers in their head, and who cannot weigh a reference they cannot read. Write them
+so each reference stands without opening another file:
+
+- An ID never stands alone: "DEC-007 (prices are stored in cents)", not "per DEC-007".
+- A closed milestone is named by what it delivered ("the import flow"), not by its ID.
+- A decision cited as a reason says what it rules out for the question at hand. A
+  reference that does not change the answer is left out.
+
+IDs remain the right tool for links between documents.
+
 The decisions record and worklog are append-only history. Correct them with later entries.
 The handoff is different: it is deliberately rewritten because stale current-state notes
 are dangerous. It is never history. History lives in decisions, the worklog, archived
@@ -364,9 +384,10 @@ restart from a summary or discard unexplained changes.
   milestone; exceeding one means something should move to an archive or a linked file.
 - Start with one plan. Closed milestones move to an archive at close; split one file per
   milestone when even the open ones become costly to read.
-- Keep the handoff short even when the worklog grows. Agents read the latest relevant
-  history, not the entire journal. Large worklogs may be rolled into dated archives
-  without rewriting entries.
+- Keep the handoff short even when the worklog grows. The handoff carries current state,
+  so a session reads the worklog only when the handoff points to an entry or the previous
+  session was interrupted. Large worklogs may be rolled into dated archives without
+  rewriting entries.
 - Add a machine-readable state pointer only when prose state is genuinely unreliable.
   The pointer must be generated from one authoritative source; never require agents to
   hand-edit the same state twice. Validate the derived output independently.

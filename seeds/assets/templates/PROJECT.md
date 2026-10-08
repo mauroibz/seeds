@@ -6,6 +6,8 @@
 
 This document owns project intent and the project-level contracts that do not yet need a
 separate specification. Link any concern that already has a stronger canonical source.
+Where a recorded decision sets a rule, state the rule here in its own words with the
+decision ID beside it.
 
 ## Purpose and users
 
